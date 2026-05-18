@@ -28,42 +28,46 @@
     .header {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 1000;
-      display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
-      padding: 12px 20px;
+      display: flex; justify-content: center; align-items: center;
+      padding: 14px 20px;
       background: rgba(5, 5, 10, 0.78);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--gold-dim);
     }
 
-    .tabs { display: flex; border: 1px solid var(--gold-dim); border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+    .tabs {
+      display: flex; position: relative;
+      background: rgba(10, 10, 18, 0.7);
+      border-radius: 10px;
+      padding: 4px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.7), 0 0 20px rgba(255,215,0,0.06);
+    }
+    .tabs::before {
+      content: ''; position: absolute; inset: 0; border-radius: 10px;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      pointer-events: none;
+    }
 
     .tab {
-      padding: 9px 28px; font-size: 12px; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      cursor: pointer; border: none; background: transparent;
-      color: rgba(255, 215, 0, 0.55);
-      transition: color .25s, background .25s;
+      position: relative; z-index: 1;
+      padding: 10px 36px; font-size: 13px; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer; border: none; border-radius: 7px;
+      background: transparent;
+      color: rgba(255, 215, 0, 0.3);
+      transition: color .35s, text-shadow .35s, background .35s, box-shadow .35s;
+      font-family: inherit;
     }
-    .tab.active { color: var(--gold); background: rgba(255, 215, 0, 0.08); }
-
-    .header-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1; justify-content: flex-end; }
-
-    .search-input {
-      padding: 7px 12px; font-size: 12px; border-radius: 4px;
-      border: 1px solid var(--gold-dim); background: rgba(255, 255, 255, 0.04);
-      color: var(--light-gold); outline: none; width: 160px;
-      font-family: inherit; transition: border-color .25s;
+    .tab:hover {
+      color: rgba(255, 215, 0, 0.6);
+      text-shadow: 0 0 6px rgba(255,215,0,0.08);
     }
-    .search-input::placeholder { color: rgba(255, 215, 0, 0.35); }
-    .search-input:focus { border-color: var(--gold); }
-
-    .filter-select {
-      padding: 7px 10px; font-size: 11px; border-radius: 4px;
-      border: 1px solid var(--gold-dim); background: rgba(255, 255, 255, 0.04);
-      color: var(--light-gold); outline: none; cursor: pointer;
-      font-family: inherit; letter-spacing: 0.05em;
+    .tab.active {
+      color: #ffd700;
+      text-shadow: 0 0 16px rgba(255,215,0,0.35), 0 0 40px rgba(255,215,0,0.08);
+      background: linear-gradient(135deg, rgba(30,25,12,0.95), rgba(18,16,8,0.9));
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,215,0,0.12);
     }
-    .filter-select option { background: #101018; color: var(--light-gold); }
 
     .scroll-hint {
       position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
@@ -285,9 +289,9 @@
     @media (max-width: 1024px) {
       .card-stack { width: 34vw; max-width: 360px; }
       .info-panel { padding: 80px 20px 80px 12px; }
-      .header { padding: 10px 14px; gap: 8px; }
-      .tab { padding: 8px 20px; font-size: 11px; }
-      .search-input { width: 130px; }
+      .header { padding: 10px 14px; }
+      .tab { padding: 8px 28px; font-size: 11px; }
+
     }
 
     @media (max-width: 768px) {
@@ -322,13 +326,11 @@
 
       .scroll-hint { display: none; }
 
-      .header { padding: 8px 10px; gap: 6px; backdrop-filter: none; }
+      .header { padding: 8px 10px; backdrop-filter: none; }
       .timeline { backdrop-filter: none; }
       .card-inner img { filter: none; }
-      .tab { padding: 7px 14px; font-size: 10px; }
-      .search-input { width: 100%; min-width: 0; }
-      .filter-select { font-size: 10px; padding: 6px 8px; }
-      .header-controls { justify-content: flex-start; }
+      .tab { padding: 7px 20px; font-size: 10px; }
+
 
       .modal-content { max-width: 100%; border-radius: 8px; }
       .modal-image { height: 200px; clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
@@ -344,7 +346,7 @@
       .info-panel { max-height: 90px; padding: 6px 12px; }
       .info-title { font-size: 13px; }
       .stage { padding-bottom: 125px; }
-      .header-controls { flex-direction: column; align-items: stretch; gap: 4px; }
+
     }
   </style>
 </head>
@@ -356,20 +358,7 @@
       <button class="tab active" data-era="legends">Legends</button>
       <button class="tab" data-era="canon">Canon</button>
     </div>
-    <div class="header-controls">
-      <input class="search-input" id="search-input" type="text" placeholder="Search comics…" />
-      <select class="filter-select" id="filter-publisher">
-        <option value="all">All Publishers</option>
-        <option value="Dark Horse Comics">Dark Horse</option>
-        <option value="Marvel Comics">Marvel</option>
-      </select>
-      <select class="filter-select" id="sort-select">
-        <option value="year-asc">Year ↑</option>
-        <option value="year-desc">Year ↓</option>
-        <option value="title-asc">Title A–Z</option>
-        <option value="title-desc">Title Z–A</option>
-      </select>
-    </div>
+
   </div>
 
   <div class="scroll-hint">Scroll to explore</div>
@@ -437,14 +426,10 @@
     let loadedData = null;
     let currentEra = localStorage.getItem('sw-era') || 'legends';
     let virtualIndex = parseFloat(localStorage.getItem('sw-index')) || 0;
-    let searchTerm = '';
-    let publisherFilter = 'all';
-    let sortBy = localStorage.getItem('sw-sort') || 'year-asc';
     let filteredData = [];
     let cards = [];
     let maxIndex = 0;
     let animating = true;
-    let searchTimer = null;
 
     const cardStack = document.getElementById('card-stack');
     const tabs = document.querySelectorAll('.tab');
@@ -455,9 +440,6 @@
     const infoSub = document.getElementById('info-subtitle');
     const infoMeta = document.getElementById('info-meta');
     const infoSummary = document.getElementById('info-summary');
-    const searchInput = document.getElementById('search-input');
-    const filterPublisher = document.getElementById('filter-publisher');
-    const sortSelect = document.getElementById('sort-select');
     const emptyState = document.getElementById('empty-state');
     const modal = document.getElementById('modal');
     const modalClose = document.getElementById('modal-close');
@@ -535,31 +517,7 @@
     }
 
     function getFilteredData() {
-      let data = [...loadedData[currentEra]];
-
-      if (searchTerm) {
-        const t = searchTerm.toLowerCase();
-        data = data.filter(c =>
-          c.title.toLowerCase().includes(t) ||
-          c.issue.toLowerCase().includes(t) ||
-          c.publisher.toLowerCase().includes(t) ||
-          c.note.toLowerCase().includes(t)
-        );
-      }
-
-      if (publisherFilter !== 'all') {
-        data = data.filter(c => c.publisher === publisherFilter);
-      }
-
-      const sortFns = {
-        'year-asc': (a, b) => getAbsoluteYear(a) - getAbsoluteYear(b),
-        'year-desc': (a, b) => getAbsoluteYear(b) - getAbsoluteYear(a),
-        'title-asc': (a, b) => a.title.localeCompare(b.title),
-        'title-desc': (a, b) => b.title.localeCompare(a.title)
-      };
-      if (sortFns[sortBy]) data.sort(sortFns[sortBy]);
-
-      return data;
+      return [...loadedData[currentEra]];
     }
 
     /* ==========================================================
@@ -703,48 +661,93 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
 
     /* ==========================================================
-       SECTION 9: SEARCH, FILTER & SORT
-       ========================================================== */
-
-    function applyFilters() {
-      searchTerm = searchInput.value;
-      publisherFilter = filterPublisher.value;
-      sortBy = sortSelect.value;
-      localStorage.setItem('sw-sort', sortBy);
-      reapplyFilters();
-    }
-
-    searchInput.addEventListener('input', () => {
-      clearTimeout(searchTimer);
-      searchTimer = setTimeout(applyFilters, 120);
-    });
-    filterPublisher.addEventListener('change', applyFilters);
-    sortSelect.addEventListener('change', applyFilters);
-
-    /* ==========================================================
        SECTION 10: INPUT HANDLING
        ========================================================== */
 
     let scrollVelocity = 0;
+    let touchStartY = 0;
+    let touchStartIndex = 0;
+    let isTouching = false;
 
     window.addEventListener('wheel', (e) => {
       scrollVelocity += e.deltaY * 0.002;
     }, { passive: true });
 
-    let touchStartY = 0;
     window.addEventListener('touchstart', (e) => {
+      if (e.target.closest('.tabs') || e.target.closest('.timeline')) return;
       touchStartY = e.touches[0].clientY;
+      touchStartIndex = virtualIndex;
+      isTouching = true;
+      scrollVelocity = 0;
     }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isTouching) return;
+      const d = touchStartY - e.touches[0].clientY;
+      virtualIndex = touchStartIndex + d * 0.006;
+      virtualIndex = Math.max(0, Math.min(maxIndex, virtualIndex));
+    }, { passive: true });
+
     window.addEventListener('touchend', (e) => {
+      if (!isTouching) return;
+      isTouching = false;
       const d = touchStartY - e.changedTouches[0].clientY;
-      scrollVelocity += d * 0.004;
+      scrollVelocity = d * 0.002;
     }, { passive: true });
 
     window.addEventListener('keydown', (e) => {
-      if (document.activeElement === searchInput) return;
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') scrollVelocity += 0.4;
       if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') scrollVelocity -= 0.4;
     });
+
+    /* ==========================================================
+       SECTION 10b: DRAGGABLE TIMELINE
+       ========================================================== */
+
+    let timelineDragging = false;
+
+    function timelineFromEvent(clientX) {
+      const rect = timelineMarker.parentElement.getBoundingClientRect();
+      let pct = (clientX - rect.left) / rect.width;
+      pct = Math.max(0, Math.min(1, pct));
+      const minYear = -26000;
+      const maxYear = 150;
+      const targetAbs = minYear + pct * (maxYear - minYear);
+      let best = 0;
+      let bestDist = Infinity;
+      filteredData.forEach((c, i) => {
+        const abs = getAbsoluteYear(c);
+        const dist = Math.abs(abs - targetAbs);
+        if (dist < bestDist) { bestDist = dist; best = i; }
+      });
+      return best;
+    }
+
+    function onTimelineStart(e) {
+      timelineDragging = true;
+      scrollVelocity = 0;
+      const cx = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+      virtualIndex = timelineFromEvent(cx);
+    }
+
+    function onTimelineMove(e) {
+      if (!timelineDragging) return;
+      e.preventDefault();
+      const cx = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+      virtualIndex = timelineFromEvent(cx);
+    }
+
+    function onTimelineEnd() {
+      timelineDragging = false;
+    }
+
+    const timelineTrack = document.querySelector('.timeline-track');
+    timelineTrack.addEventListener('mousedown', onTimelineStart);
+    window.addEventListener('mousemove', onTimelineMove);
+    window.addEventListener('mouseup', onTimelineEnd);
+    timelineTrack.addEventListener('touchstart', onTimelineStart, { passive: true });
+    window.addEventListener('touchmove', onTimelineMove, { passive: false });
+    window.addEventListener('touchend', onTimelineEnd);
 
     /* ==========================================================
        SECTION 11: ANIMATION LOOP
@@ -760,11 +763,12 @@
 
       scrollVelocity *= 0.9;
       if (Math.abs(scrollVelocity) < 0.001) scrollVelocity = 0;
-      virtualIndex += scrollVelocity;
-      virtualIndex = Math.max(0, Math.min(maxIndex, virtualIndex));
-
-      const snapTarget = Math.round(virtualIndex);
-      virtualIndex += (snapTarget - virtualIndex) * (IS_MOBILE ? 0.15 : 0.08);
+      if (!isTouching && !timelineDragging) {
+        virtualIndex += scrollVelocity;
+        virtualIndex = Math.max(0, Math.min(maxIndex, virtualIndex));
+        const snapTarget = Math.round(virtualIndex);
+        virtualIndex += (snapTarget - virtualIndex) * (IS_MOBILE ? 0.15 : 0.08);
+      }
 
       const center = Math.round(virtualIndex);
       if (center !== lastRenderedCenter) {
@@ -842,16 +846,11 @@
 
     function restoreState() {
       const savedEra = localStorage.getItem('sw-era');
-      const savedSort = localStorage.getItem('sw-sort');
       if (savedEra && (savedEra === 'legends' || savedEra === 'canon')) {
         currentEra = savedEra;
         tabs.forEach(t => {
           t.classList.toggle('active', t.getAttribute('data-era') === savedEra);
         });
-      }
-      if (savedSort) {
-        sortBy = savedSort;
-        sortSelect.value = savedSort;
       }
     }
 
