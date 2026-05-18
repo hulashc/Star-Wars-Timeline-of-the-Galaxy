@@ -298,8 +298,7 @@
       .info-panel {
         position: fixed; bottom: 50px; left: 0; right: 0;
         padding: 8px 14px; z-index: 800;
-        background: var(--panel-bg);
-        backdrop-filter: blur(12px);
+        background: rgba(5, 5, 10, 0.96);
         border-top: 1px solid var(--gold-dim);
         max-height: 110px;
       }
@@ -323,7 +322,9 @@
 
       .scroll-hint { display: none; }
 
-      .header { padding: 8px 10px; gap: 6px; }
+      .header { padding: 8px 10px; gap: 6px; backdrop-filter: none; }
+      .timeline { backdrop-filter: none; }
+      .card-inner img { filter: none; }
       .tab { padding: 7px 14px; font-size: 10px; }
       .search-input { width: 100%; min-width: 0; }
       .filter-select { font-size: 10px; padding: 6px 8px; }
@@ -338,6 +339,8 @@
     @media (max-width: 480px) {
       .card-stack { width: 60vw; max-width: 280px; height: 48vh; }
 
+      .header { backdrop-filter: none; }
+      .timeline { backdrop-filter: none; }
       .info-panel { max-height: 90px; padding: 6px 12px; }
       .info-title { font-size: 13px; }
       .stage { padding-bottom: 125px; }
@@ -428,7 +431,8 @@
        SECTION 2: STATE & DOM REFS
        ========================================================== */
 
-    const WINDOW_RADIUS = 7;
+    const WINDOW_RADIUS = window.innerWidth < 768 ? 4 : 7;
+    const IS_MOBILE = window.innerWidth < 768;
 
     let loadedData = null;
     let currentEra = localStorage.getItem('sw-era') || 'legends';
@@ -760,12 +764,12 @@
       virtualIndex = Math.max(0, Math.min(maxIndex, virtualIndex));
 
       const snapTarget = Math.round(virtualIndex);
-      virtualIndex += (snapTarget - virtualIndex) * 0.08;
+      virtualIndex += (snapTarget - virtualIndex) * (IS_MOBILE ? 0.15 : 0.08);
 
       const center = Math.round(virtualIndex);
       if (center !== lastRenderedCenter) {
-        renderWindow();
         lastRenderedCenter = center;
+        renderWindow();
       }
 
       const baseTilt = -18;
