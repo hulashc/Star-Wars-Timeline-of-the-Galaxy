@@ -330,6 +330,8 @@
       .timeline { backdrop-filter: none; }
       .card-inner img { filter: none; }
       .tab { padding: 7px 20px; font-size: 10px; }
+      .card-inner { border: none; overflow: visible; }
+      .card-inner img { transform: scale(1.1); object-fit: contain; }
 
 
       .modal-content { max-width: 100%; border-radius: 8px; }
@@ -675,8 +677,7 @@
         catch (e) {}
       }
     }
-    function hapticTick() {
-      if (navigator.vibrate) { navigator.vibrate(8); return; }
+    function audioTick() {
       initAudio();
       if (!audioCtx) return;
       if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -692,6 +693,19 @@
         osc.start(); osc.stop(t + d);
       } catch (e) {}
     }
+    function hapticTick() {
+      if (navigator.vibrate) { navigator.vibrate(8); return; }
+      try {
+        const id = 'ht-' + Date.now();
+        const inp = document.createElement('input');
+        inp.type = 'checkbox'; inp.setAttribute('switch', '');
+        inp.id = id; inp.style.cssText = 'position:fixed;opacity:0;pointer-events:none;width:1px;height:1px';
+        const lbl = document.createElement('label');
+        lbl.htmlFor = id; lbl.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+        lbl.appendChild(inp); document.body.appendChild(lbl);
+        lbl.click(); lbl.remove();
+      } catch (e) { audioTick(); }
+    }
 
     let scrollVelocity = 0;
     let isTouching = false;
@@ -699,6 +713,7 @@
     let touchAnchorIndex = 0;
     let touchLastY = 0;
     let flickVelocity = 0;
+    let lastHapticCenter = -1;
 
     const TOUCH_SENSITIVITY = 0.01;
 
@@ -715,6 +730,7 @@
       isTouching = true;
       scrollVelocity = 0;
       flickVelocity = 0;
+      lastHapticCenter = Math.round(virtualIndex);
     }, { passive: true });
 
     window.addEventListener('touchmove', (e) => {
@@ -726,6 +742,8 @@
       virtualIndex = touchAnchorIndex + delta * TOUCH_SENSITIVITY;
       virtualIndex = Math.max(0, Math.min(maxIndex, virtualIndex));
       flickVelocity = flickVelocity * 0.6 + frameDelta * TOUCH_SENSITIVITY * 0.4;
+      const c = Math.round(virtualIndex);
+      if (c !== lastHapticCenter) { lastHapticCenter = c; hapticTick(); }
     }, { passive: true });
 
     window.addEventListener('touchend', (e) => {
@@ -814,7 +832,9 @@
       if (center !== lastRenderedCenter) {
         lastRenderedCenter = center;
         renderWindow();
-        if (!isTouching && !timelineDragging && IS_MOBILE) hapticTick();
+        if (!isTouching && !timelineDragging && IS_MOBILE) {
+          if (navigator.vibrate) navigator.vibrate(8);
+        }
       }
 
       const baseTilt = -18;
