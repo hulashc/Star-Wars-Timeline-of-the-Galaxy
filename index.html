@@ -668,6 +668,31 @@
        SECTION 10: INPUT HANDLING
        ========================================================== */
 
+    let audioCtx = null;
+    function initAudio() {
+      if (!audioCtx) {
+        try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+        catch (e) {}
+      }
+    }
+    function hapticTick() {
+      if (navigator.vibrate) { navigator.vibrate(8); return; }
+      initAudio();
+      if (!audioCtx) return;
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      try {
+        const t = audioCtx.currentTime, d = 0.04;
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        osc.type = 'sine'; osc.frequency.value = 800;
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(0.06, t + 0.005);
+        g.gain.exponentialRampToValueAtTime(0.001, t + d);
+        osc.connect(g); g.connect(audioCtx.destination);
+        osc.start(); osc.stop(t + d);
+      } catch (e) {}
+    }
+
     let scrollVelocity = 0;
     let isTouching = false;
     let touchAnchorY = 0;
@@ -683,6 +708,7 @@
 
     window.addEventListener('touchstart', (e) => {
       if (e.target.closest('.tabs') || e.target.closest('.timeline')) return;
+      initAudio();
       touchAnchorY = e.touches[0].clientY;
       touchLastY = touchAnchorY;
       touchAnchorIndex = virtualIndex;
@@ -788,7 +814,7 @@
       if (center !== lastRenderedCenter) {
         lastRenderedCenter = center;
         renderWindow();
-        if (!isTouching && !timelineDragging && IS_MOBILE && navigator.vibrate) navigator.vibrate(8);
+        if (!isTouching && !timelineDragging && IS_MOBILE) hapticTick();
       }
 
       const baseTilt = -18;
