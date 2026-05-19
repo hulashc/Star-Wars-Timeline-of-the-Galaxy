@@ -486,7 +486,11 @@
     }
 
     function coverSlug(comic) {
-      return slugify(comic.title + ' ' + comic.issue);
+      const ageSlug = slugify(comic.age);
+      const sub = comic.title.includes(':') ? comic.title.split(':')[1].trim() : comic.title;
+      const subSlug = slugify(sub);
+      const issueSlug = slugify(comic.issue);
+      return `${ageSlug}/${subSlug}/${issueSlug}`;
     }
     function createCoverImage(comic, container) {
       const img = document.createElement('img');
@@ -517,7 +521,7 @@
     }
 
     function getFilteredData() {
-      return [...loadedData[currentEra]];
+      return [...loadedData[currentEra]].reverse();
     }
 
     /* ==========================================================
@@ -665,9 +669,13 @@
        ========================================================== */
 
     let scrollVelocity = 0;
-    let touchStartY = 0;
-    let touchStartIndex = 0;
     let isTouching = false;
+    let touchAnchorY = 0;
+    let touchAnchorIndex = 0;
+    let touchLastY = 0;
+    let flickVelocity = 0;
+
+    const TOUCH_SENSITIVITY = 0.01;
 
     window.addEventListener('wheel', (e) => {
       scrollVelocity += e.deltaY * 0.002;
@@ -675,24 +683,30 @@
 
     window.addEventListener('touchstart', (e) => {
       if (e.target.closest('.tabs') || e.target.closest('.timeline')) return;
-      touchStartY = e.touches[0].clientY;
-      touchStartIndex = virtualIndex;
+      touchAnchorY = e.touches[0].clientY;
+      touchLastY = touchAnchorY;
+      touchAnchorIndex = virtualIndex;
       isTouching = true;
       scrollVelocity = 0;
+      flickVelocity = 0;
     }, { passive: true });
 
     window.addEventListener('touchmove', (e) => {
       if (!isTouching) return;
-      const d = touchStartY - e.touches[0].clientY;
-      virtualIndex = touchStartIndex + d * 0.006;
+      const y = e.touches[0].clientY;
+      const delta = touchAnchorY - y;
+      const frameDelta = touchLastY - y;
+      touchLastY = y;
+      virtualIndex = touchAnchorIndex + delta * TOUCH_SENSITIVITY;
       virtualIndex = Math.max(0, Math.min(maxIndex, virtualIndex));
+      flickVelocity = flickVelocity * 0.6 + frameDelta * TOUCH_SENSITIVITY * 0.4;
     }, { passive: true });
 
     window.addEventListener('touchend', (e) => {
       if (!isTouching) return;
       isTouching = false;
-      const d = touchStartY - e.changedTouches[0].clientY;
-      scrollVelocity = d * 0.002;
+      scrollVelocity = Math.abs(flickVelocity) > 0.03 ? flickVelocity : 0;
+      flickVelocity = 0;
     }, { passive: true });
 
     window.addEventListener('keydown', (e) => {
@@ -761,9 +775,9 @@
         return;
       }
 
-      scrollVelocity *= 0.9;
-      if (Math.abs(scrollVelocity) < 0.001) scrollVelocity = 0;
       if (!isTouching && !timelineDragging) {
+        scrollVelocity *= 0.82;
+        if (Math.abs(scrollVelocity) < 0.001) scrollVelocity = 0;
         virtualIndex += scrollVelocity;
         virtualIndex = Math.max(0, Math.min(maxIndex, virtualIndex));
         const snapTarget = Math.round(virtualIndex);
@@ -774,6 +788,7 @@
       if (center !== lastRenderedCenter) {
         lastRenderedCenter = center;
         renderWindow();
+        if (!isTouching && !timelineDragging && IS_MOBILE && navigator.vibrate) navigator.vibrate(8);
       }
 
       const baseTilt = -18;
