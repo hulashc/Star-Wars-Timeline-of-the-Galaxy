@@ -1,4 +1,4 @@
-const COMICS_DATA = {
+var COMICS_DATA = {
   "legends": [
     {
       "year": 25793, "era": "BBY",
