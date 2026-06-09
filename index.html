@@ -25,13 +25,8 @@
 
     /* ===== STAGE ===== */
     .stage {
-      position: fixed; inset: 0;
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(320px, 400px);
-      align-items: stretch;
+      position: fixed; top: 90px; left: 0; right: 0; bottom: 0;
       pointer-events: none;
-      padding-top: 36px;
-      padding-bottom: 20px;
     }
 
     .rolodex-container {
@@ -40,7 +35,7 @@
     }
 
     .card-stack {
-      position: absolute; top: 52%; left: 50%;
+      position: absolute; top: 48%; left: 50%;
       width: 36vw; max-width: 460px; height: 76vh;
       transform-style: preserve-3d;
       transform: translate(-50%, -50%);
@@ -94,37 +89,47 @@
 
     /* ===== INFO PANEL ===== */
     .info-panel {
-      position: relative; padding: 100px 36px 100px 20px;
-      pointer-events: none; overflow-y: auto;
+      position: fixed; top: 28px; left: 0; right: 0;
+      height: 62px; z-index: 1400;
+      display: flex; align-items: center;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      pointer-events: auto;
+      overflow: hidden;
     }
     .info-card {
-      position: sticky; top: 100px;
-      pointer-events: auto;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px; padding: 20px 22px 22px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.9);
+      display: flex; align-items: center;
+      width: 100%; height: 100%;
+      gap: 16px; padding: 0 20px;
     }
     .info-era-pill {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 3px 10px; border-radius: 999px;
       border: 1px solid var(--border);
-      font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
-      margin-bottom: 12px; opacity: .9;
+      font-size: 9px; letter-spacing: .16em; text-transform: uppercase;
+      flex-shrink: 0; opacity: .9;
       cursor: pointer; transition: opacity .2s, border-color .2s;
       user-select: none;
     }
     .info-era-pill:hover { opacity: 1; border-color: var(--green); }
     .info-era-pill::after {
-      content: '\21C4'; font-size: 11px; opacity: .6;
+      content: '\21C4'; font-size: 10px; opacity: .6;
       transition: opacity .2s;
     }
     .info-era-pill:hover::after { opacity: 1; }
-    .info-title { font-size: 18px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 3px; }
-    .info-subtitle { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; opacity: .75; margin-bottom: 14px; }
-    .info-meta { font-size: 11px; line-height: 1.7; opacity: .85; margin-bottom: 12px; }
-    .info-meta strong { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: 10px; }
-    .info-summary { font-size: 12px; line-height: 1.6; opacity: .8; }
+    .info-title {
+      font-size: 15px; font-weight: 800;
+      letter-spacing: .06em; text-transform: uppercase;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .info-subtitle {
+      font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      opacity: .65; flex-shrink: 0;
+    }
+    .info-meta { display: none; }
+    .info-summary { display: none; }
 
     /* ===== MODAL ===== */
     .modal-overlay {
@@ -242,31 +247,14 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .card-stack { width: 34vw; max-width: 360px; }
-      .info-panel { padding: 80px 20px 80px 12px; }
-
     }
 
     @media (max-width: 768px) {
-      .stage {
-        grid-template-columns: 1fr;
-        padding-bottom: 60px;
-      }
-      .info-panel {
-        position: fixed; bottom: 0; left: 0; right: 0;
-        padding: 8px 14px; z-index: 800;
-        background: #000000;
-        border-top: 1px solid var(--border);
-        max-height: 110px;
-      }
-      .info-card {
-        position: static; border: none; background: none;
-        box-shadow: none; padding: 0; border-radius: 0;
-      }
-      .info-era-pill { margin-bottom: 6px; }
-      .info-title { font-size: 14px; }
-      .info-subtitle { font-size: 10px; margin-bottom: 4px; }
-      .info-meta { display: none; }
-      .info-summary { font-size: 11px; display: none; }
+      .stage { top: 84px; }
+      .info-panel { height: 56px; }
+      .info-era-pill { font-size: 8px; padding: 2px 8px; }
+      .info-title { font-size: 13px; }
+      .info-subtitle { font-size: 9px; }
 
       .card-stack { width: 50vw; max-width: 320px; height: 55vh; }
       .card-inner img { filter: none; }
@@ -280,11 +268,13 @@
     }
 
     @media (max-width: 480px) {
+      .stage { top: 78px; }
+      .info-panel { height: 50px; }
+      .info-card { gap: 10px; padding: 0 12px; }
+      .info-era-pill { font-size: 7px; padding: 1px 6px; }
+      .info-title { font-size: 11px; }
+      .info-subtitle { display: none; }
       .card-stack { width: 60vw; max-width: 280px; height: 48vh; }
-      .info-panel { max-height: 90px; padding: 6px 12px; }
-      .info-title { font-size: 13px; }
-      .stage { padding-bottom: 60px; }
-
     }
   </style>
 </head>
@@ -296,15 +286,6 @@
       <div class="card-stack" id="card-stack"></div>
       <div class="empty-state" id="empty-state">No comics match your filter</div>
     </div>
-    <aside class="info-panel">
-      <div class="info-card">
-        <div class="info-era-pill" id="info-era-pill"></div>
-        <div class="info-title" id="info-title"></div>
-        <div class="info-subtitle" id="info-subtitle"></div>
-        <div class="info-meta" id="info-meta"></div>
-        <div class="info-summary" id="info-summary"></div>
-      </div>
-    </aside>
   </div>
 
   <div class="era-bar" id="era-bar">
@@ -314,6 +295,24 @@
     <span class="era-lbl" data-era="1">Canon</span>
     <span class="era-arrow" id="era-arrow-r">▶</span>
     <span class="yr" id="era-year"></span>
+  </div>
+
+  <aside class="info-panel">
+    <div class="info-card">
+      <div class="info-era-pill" id="info-era-pill"></div>
+      <div class="info-title" id="info-title"></div>
+      <div class="info-subtitle" id="info-subtitle"></div>
+      <div class="info-meta" id="info-meta"></div>
+      <div class="info-summary" id="info-summary"></div>
+    </div>
+  </aside>
+
+  <!-- ===== STAGE ===== -->
+  <div class="stage">
+    <div class="rolodex-container">
+      <div class="card-stack" id="card-stack"></div>
+      <div class="empty-state" id="empty-state">No comics match your filter</div>
+    </div>
   </div>
 
   <!-- ===== MODAL ===== -->
