@@ -99,7 +99,7 @@
       overflow: hidden;
     }
     .info-card {
-      display: flex; align-items: center;
+      display: flex; align-items: center; justify-content: center;
       width: 100%; height: 100%;
       gap: 16px; padding: 0 20px;
     }
@@ -192,11 +192,7 @@
     .modal-meta strong { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: 11px; }
     .modal-summary { font-size: 13px; line-height: 1.7; opacity: .85; }
 
-    .empty-state {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      color: rgba(218,218,218,0.4); font-size: 14px; letter-spacing: .1em;
-      pointer-events: none; text-align: center;
-    }
+    .empty-state { display: none; }
 
     /* ===== ERA BAR ===== */
     .era-bar {
@@ -280,14 +276,6 @@
 </head>
 <body>
 
-  <!-- ===== STAGE ===== -->
-  <div class="stage">
-    <div class="rolodex-container">
-      <div class="card-stack" id="card-stack"></div>
-      <div class="empty-state" id="empty-state">No comics match your filter</div>
-    </div>
-  </div>
-
   <div class="era-bar" id="era-bar">
     <span class="era-arrow" id="era-arrow-l">◀</span>
     <span class="era-lbl" data-era="0">Legends</span>
@@ -311,7 +299,6 @@
   <div class="stage">
     <div class="rolodex-container">
       <div class="card-stack" id="card-stack"></div>
-      <div class="empty-state" id="empty-state">No comics match your filter</div>
     </div>
   </div>
 
@@ -354,7 +341,6 @@
     let animating = true;
 
     const cardStack = document.getElementById('card-stack');
-    const emptyState = document.getElementById('empty-state');
     const infoEra = document.getElementById('info-era-pill');
     const infoTitle = document.getElementById('info-title');
     const infoSub = document.getElementById('info-subtitle');
@@ -460,12 +446,10 @@
 
       if (filteredData.length === 0) {
         cardStack.innerHTML = '';
-        emptyState.style.display = 'block';
         cards = [];
         maxIndex = 0;
         return;
       }
-      emptyState.style.display = 'none';
 
       const existing = new Set();
       Array.from(cardStack.children).forEach(el => {
