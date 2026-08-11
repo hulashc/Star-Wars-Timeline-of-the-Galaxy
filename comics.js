@@ -399,6 +399,450 @@ var COMICS_DATA = {
       "publisher": "Dark Horse Comics", "format": "5-issue limited series",
       "release": "1998",
       "note": "The final chapter of the Tales of the Jedi saga brings peace at last."
+    },
+
+    // ── Knights of the Old Republic ──────────────────────────────
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Commencement",
+      "title": "Knights of the Old Republic", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "Padawan Zayne Carrick survives when his Jedi Masters murder his fellow trial candidates on Taris, and is framed for the massacre."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Commencement",
+      "title": "Knights of the Old Republic", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "On the run and wanted for the crime, Zayne is taken in by the smuggler Gryph, who sees a chance to profit from his fugitive Padawan's plight."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Commencement",
+      "title": "Knights of the Old Republic", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "Zayne, Gryph, the mechanic Camper, and his ward Jarael are drawn together as Republic and bounty-hunter pursuit closes in."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Commencement",
+      "title": "Knights of the Old Republic", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "The reluctant allies clash over trust as evidence mounts that the massacre was ordered from within the Jedi Order itself."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Commencement",
+      "title": "Knights of the Old Republic", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "A captured Mandalorian deserter, Rohlan Dyre, joins the fugitives, forcing them to decide whether an enemy of the Republic can be trusted."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Commencement",
+      "title": "Knights of the Old Republic", "issue": "#6",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "With Jedi Master Lucien Draay's hunters closing in, the makeshift crew commits to working together to survive and clear Zayne's name."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Flashpoint",
+      "title": "Knights of the Old Republic", "issue": "#7",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "The crew investigates a covert Republic weapons test on the moon Serroco that has gone catastrophically wrong."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Flashpoint",
+      "title": "Knights of the Old Republic", "issue": "#8",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "Buried secrets about the Republic's conduct of the Mandalorian War come to light as the crew digs deeper into the Serroco disaster."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Flashpoint: Homecoming",
+      "title": "Knights of the Old Republic", "issue": "#9",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "Gryph is forced to confront his own past when an old associate resurfaces during a return to familiar territory."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Flashpoint",
+      "title": "Knights of the Old Republic", "issue": "#10",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "The crew narrowly escapes Serroco with proof that the Republic's own corruption fueled the disaster."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Reunion",
+      "title": "Knights of the Old Republic", "issue": "#11",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2006",
+      "note": "Zayne risks capture to reunite with his estranged family, who are stunned to learn he is a fugitive accused of murder."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Reunion",
+      "title": "Knights of the Old Republic", "issue": "#12",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "The reunion forces Zayne to reckon with his family's fear and doubt as the truth about the Padawan massacre still eludes him."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Days of Fear",
+      "title": "Knights of the Old Republic", "issue": "#13",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "As the search for answers widens, a secretive faction within the Jedi Order tightens its grip to keep its conspiracy hidden."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Days of Fear",
+      "title": "Knights of the Old Republic", "issue": "#14",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "New players are drawn into the unfolding conspiracy as the hidden Jedi faction moves to silence loose ends."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Days of Fear",
+      "title": "Knights of the Old Republic", "issue": "#15",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "The fugitives find themselves caught between the Republic, the Mandalorians, and a Jedi conspiracy none of them fully understand yet."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Nights of Anger",
+      "title": "Knights of the Old Republic", "issue": "#16",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "Tempers flare as old grudges and new betrayals push members of the crew to their breaking points."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Nights of Anger",
+      "title": "Knights of the Old Republic", "issue": "#17",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "The hidden Jedi faction's manipulation of the war effort comes further into focus, endangering everyone who has learned too much."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Nights of Anger",
+      "title": "Knights of the Old Republic", "issue": "#18",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "A confrontation forces uneasy allies to choose sides as the conspiracy's reach becomes impossible to ignore."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Daze of Hate",
+      "title": "Knights of the Old Republic", "issue": "#19",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "The consequences of the conspiracy ripple outward, drawing in Jedi who still believe in the Order's integrity."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Daze of Hate",
+      "title": "Knights of the Old Republic", "issue": "#20",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "Loyalties are tested across the Republic and the Mandalorian ranks alike as the true scale of the cover-up emerges."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Daze of Hate",
+      "title": "Knights of the Old Republic", "issue": "#21",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "The crew races to keep the truth from being buried for good as the conspirators tighten their control."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Knights of Suffering",
+      "title": "Knights of the Old Republic", "issue": "#22",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "The fugitives and their unlikely allies converge for a final push to expose the Jedi conspiracy behind the massacre."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Knights of Suffering",
+      "title": "Knights of the Old Republic", "issue": "#23",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2007",
+      "note": "Old wounds resurface as the true architects of the Padawan massacre are finally named."
+    },
+    {
+      "year": 3964, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Knights of Suffering",
+      "title": "Knights of the Old Republic", "issue": "#24",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "The conspiracy's exposure comes at a steep cost, closing the book on the first chapter of Zayne's fight to clear his name."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Vector",
+      "title": "Knights of the Old Republic", "issue": "#25",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "An ancient, plague-bearing relic surfaces, pulling Zayne's crew into events far larger than their own fight for survival."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Vector",
+      "title": "Knights of the Old Republic", "issue": "#26",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "The crew crosses paths with a Jedi held in centuries-long stasis, guardian of a threat older than the Sith Wars."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Vector",
+      "title": "Knights of the Old Republic", "issue": "#27",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "The plague bound to the ancient relic threatens to spread unchecked if the artifact isn't contained."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Vector",
+      "title": "Knights of the Old Republic", "issue": "#28",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "The crew helps see the ancient threat sealed away once more, at a cost that will echo for generations."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Exalted",
+      "title": "Knights of the Old Republic", "issue": "#29",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "A mysterious Force-sensitive figure draws unwanted attention from both the Jedi and darker powers."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Exalted",
+      "title": "Knights of the Old Republic", "issue": "#30",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "The crew must decide how far to go to protect someone the galaxy's power players all want for themselves."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Turnabout",
+      "title": "Knights of the Old Republic", "issue": "#31",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "Zayne turns the tables on his pursuers, using the Order's own secrets to strike back at last."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Vindication",
+      "title": "Knights of the Old Republic", "issue": "#32",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "The fallout from Zayne's counterstrike forces the Jedi Order to reckon publicly with the conspiracy in its ranks."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Vindication",
+      "title": "Knights of the Old Republic", "issue": "#33",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "Lucien Draay's role in the massacre and its cover-up finally comes under scrutiny he can no longer escape."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Vindication",
+      "title": "Knights of the Old Republic", "issue": "#34",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "Old allies and enemies alike are forced to pick a side as the reckoning over the Padawan massacre reaches its climax."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Vindication",
+      "title": "Knights of the Old Republic", "issue": "#35",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2008",
+      "note": "The truth about the massacre is laid bare, but vindication proves far costlier than Zayne expected."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Prophet Motive",
+      "title": "Knights of the Old Republic", "issue": "#36",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "Gryph's eye for a profitable scheme lands the crew in the middle of a con involving a self-styled prophet."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Prophet Motive",
+      "title": "Knights of the Old Republic", "issue": "#37",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "The crew's latest scheme unravels in typically chaotic fashion, leaving Gryph scrambling to salvage his cut."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Faithful Execution",
+      "title": "Knights of the Old Republic", "issue": "#38",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "A quiet moment between missions turns into a test of loyalty for one member of the crew."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Dueling Ambitions",
+      "title": "Knights of the Old Republic", "issue": "#39",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "A power-hungry rival emerges from the shadows of the Mandalorian War with designs that threaten both sides of the conflict."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Dueling Ambitions",
+      "title": "Knights of the Old Republic", "issue": "#40",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "The rival's ambitions grow more dangerous as they reach for a source of power neither the Republic nor the Mandalorians can control."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Dueling Ambitions",
+      "title": "Knights of the Old Republic", "issue": "#41",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "The crew is drawn into stopping a threat that could reshape the balance of the war entirely."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Masks",
+      "title": "Knights of the Old Republic", "issue": "#42",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "Disguise and deception take center stage as a member of the crew goes undercover to protect the others."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "The Reaping",
+      "title": "Knights of the Old Republic", "issue": "#43",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "The threat first stirred during Dueling Ambitions resurfaces, more dangerous for having been left to fester."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "The Reaping",
+      "title": "Knights of the Old Republic", "issue": "#44",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "The crew scrambles to contain a growing danger before it can claim more victims."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Destroyer",
+      "title": "Knights of the Old Republic", "issue": "#45",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "With the Mandalorian War reaching a breaking point, the crew races to stop a threat before it destroys everything they've fought for."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Destroyer",
+      "title": "Knights of the Old Republic", "issue": "#46",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "The cost of stopping the growing threat proves higher than anyone anticipated."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Demon",
+      "title": "Knights of the Old Republic", "issue": "#47",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2009",
+      "note": "The series' final confrontation begins as the dark power behind the crew's recent trials is revealed in full."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Demon",
+      "title": "Knights of the Old Republic", "issue": "#48",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2010",
+      "note": "Zayne and his allies make their stand against the demon-possessed threat as the Mandalorian War rages on around them."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Demon",
+      "title": "Knights of the Old Republic", "issue": "#49",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2010",
+      "note": "Old scores are settled and old bonds are tested as the crew's long fight nears its end."
+    },
+    {
+      "year": 3963, "era": "BBY",
+      "age": "Knights of the Old Republic", "arc": "Demon",
+      "title": "Knights of the Old Republic", "issue": "#50",
+      "publisher": "Dark Horse Comics", "format": "50-issue ongoing series",
+      "release": "2010",
+      "note": "In the series finale, Zayne Carrick finally confronts the true legacy of the Padawan massacre that made him a fugitive."
+    },
+
+    // ── Knights of the Old Republic – War ─────────────────────────
+    {
+      "year": 3960, "era": "BBY",
+      "age": "Knights of the Old Republic – War",
+      "title": "Knights of the Old Republic – War", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Passing through his homeworld years after clearing his name, Zayne Carrick discovers he's still eligible for conscription into the Mandalorian War."
+    },
+    {
+      "year": 3960, "era": "BBY",
+      "age": "Knights of the Old Republic – War",
+      "title": "Knights of the Old Republic – War", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Stripped of his Jedi status and drafted as a soldier, Zayne struggles to hold to his pacifist principles on the front lines."
+    },
+    {
+      "year": 3960, "era": "BBY",
+      "age": "Knights of the Old Republic – War",
+      "title": "Knights of the Old Republic – War", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Captured during a Republic beach assault, Zayne finds himself a prisoner behind Mandalorian lines."
+    },
+    {
+      "year": 3960, "era": "BBY",
+      "age": "Knights of the Old Republic – War",
+      "title": "Knights of the Old Republic – War", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Forced to fight alongside his captors to survive, Zayne is caught between loyalty to the Republic and the enemies who spared his life."
+    },
+    {
+      "year": 3960, "era": "BBY",
+      "age": "Knights of the Old Republic – War",
+      "title": "Knights of the Old Republic – War", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "As the Mandalorian War reaches its climax, Zayne must decide where he truly stands before the fighting consumes everyone he cares about."
     }
   ],
   "canon": [
