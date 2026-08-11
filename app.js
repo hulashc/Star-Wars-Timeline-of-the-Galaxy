@@ -78,11 +78,21 @@ function handleImageError(img, alt) {
 }
 
 function coverSlug(comic) {
+  // Top-level continuity split — covers/legends/... vs covers/canon/... —
+  // mirroring how comics.js itself splits COMICS_DATA into legends/canon.
+  // `continuity` is stamped onto every comic in sortAllEras() at load time.
+  const continuitySlug = comic.continuity;
   const ageSlug = slugify(comic.age);
-  const sub = comic.title.includes(':') ? comic.title.split(':')[1].trim() : comic.title;
+  // Prefer the named story arc (e.g. Knights of the Old Republic's
+  // "Commencement", "Flashpoint", ...) as the sub-folder when present —
+  // covers/legends/knights-of-the-old-republic/commencement/1.jpg — matching
+  // the per-arc folder convention used for Dawn of the Jedi / Tales of the Jedi.
+  // Falls back to the colon-split part of the title for series without a
+  // distinct `arc` field.
+  const sub = comic.arc || (comic.title.includes(':') ? comic.title.split(':')[1].trim() : comic.title);
   const subSlug = slugify(sub);
   const issueSlug = slugify(comic.issue);
-  return `${ageSlug}/${subSlug}/${issueSlug}`;
+  return `${continuitySlug}/${ageSlug}/${subSlug}/${issueSlug}`;
 }
 
 function createCoverImage(comic, container) {
@@ -125,7 +135,7 @@ function initApp() {
   loadedData = sortAllEras(COMICS_DATA);
   reapplyFilters();
   buildArcNav();
-  requestAnimationFrame(animate);
+  wake();
 }
 
 // Chronological order is authored by hand in comics.js (for readable diffs),
@@ -135,6 +145,11 @@ function initApp() {
 function sortAllEras(data) {
   const sorted = {};
   for (const era in data) {
+    // `era` here is the continuity key ('legends'/'canon'), not the
+    // per-comic BBY/ABY `era` field — stamp it as `continuity` so
+    // coverSlug() can route to covers/legends/... vs covers/canon/...
+    // without relying on ambient global state.
+    data[era].forEach(c => { c.continuity = era; });
     const withKey = data[era].map((c, i) => ({ c, i, t: getAbsoluteYear(c) }));
     const ordered = [...withKey].sort((a, b) => a.t - b.t || a.i - b.i);
     ordered.forEach((entry, idx) => {
@@ -235,6 +250,7 @@ function switchEra(newIndex) {
   reapplyFilters();
   updateEraBar();
   buildArcNav();
+  wake(); // the freshly rebuilt cards need an animate() pass to be positioned
   requestAnimationFrame(() => { cardStack.style.opacity = ''; });
 }
 
@@ -283,6 +299,7 @@ function openModal(comic) {
 function closeModal() {
   modal.classList.remove('open');
   animating = true;
+  wake(); // the loop was fully stopped while the modal was open — restart it
 }
 
 modalClose.addEventListener('click', closeModal);
@@ -337,6 +354,7 @@ function jumpToAge(age) {
   lastRenderedCenter = -1;
   renderWindow();
   updateInfo();
+  wake(); // renderWindow()/updateInfo() don't position cards — animate() does
   if (IS_MOBILE) closeArcNav();
 }
 
@@ -415,6 +433,7 @@ const SWIPE_THRESHOLD = 30;
 
 window.addEventListener('wheel', (e) => {
   scrollVelocity += e.deltaY * 0.002;
+  wake();
 }, { passive: true });
 
 window.addEventListener('touchstart', (e) => {
@@ -428,10 +447,15 @@ window.addEventListener('touchstart', (e) => {
   scrollVelocity = 0;
   flickVelocity = 0;
   lastHapticCenter = Math.round(virtualIndex);
+  wake();
 }, { passive: true });
 
 window.addEventListener('touchmove', (e) => {
   if (!isTouching) return;
+  // Without this, a downward drag at the top of the page is interpreted by
+  // the browser as a pull-to-refresh gesture instead of a rolodex scroll —
+  // needs a non-passive listener to actually be able to cancel it.
+  e.preventDefault();
   const x = e.touches[0].clientX;
   const y = e.touches[0].clientY;
   const deltaX = touchAnchorX - x;
@@ -452,20 +476,22 @@ window.addEventListener('touchmove', (e) => {
   virtualIndex = touchAnchorIndex + deltaY * TOUCH_SENSITIVITY;
   virtualIndex = Math.max(0, Math.min(maxIndex, virtualIndex));
   flickVelocity = flickVelocity * 0.6 + frameDelta * TOUCH_SENSITIVITY * 0.4;
+  wake(); // defensive — touchstart already wakes the loop, this is a cheap no-op otherwise
   const c = Math.round(virtualIndex);
   if (c !== lastHapticCenter) { lastHapticCenter = c; hapticTick(); }
-}, { passive: true });
+}, { passive: false }); // must be non-passive for the preventDefault() above to take effect
 
 window.addEventListener('touchend', (e) => {
   if (!isTouching) return;
   isTouching = false;
   scrollVelocity = Math.abs(flickVelocity) > 0.03 ? flickVelocity : 0;
   flickVelocity = 0;
+  wake();
 }, { passive: true });
 
 window.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') scrollVelocity += 0.4;
-  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') scrollVelocity -= 0.4;
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { scrollVelocity += 0.4; wake(); }
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { scrollVelocity -= 0.4; wake(); }
   if (e.key === 'e' || e.key === 'E') {
     const next = (currentEraIndex + 1) % eras.length;
     switchEra(next);
@@ -502,9 +528,23 @@ setTimeout(() => { eraArrows.forEach(a => a.style.opacity = '0'); }, 5000);
 
 let lastRenderedCenter = -1;
 
+// The rAF loop used to run forever at 60fps, re-writing every visible card's
+// transform/opacity every frame even when the deck was sitting completely
+// still — pure wasted main-thread work that made real scrolling feel janky.
+// `loopScheduled` lets us stop scheduling frames once idle; `wake()` (called
+// from every input path that can move the deck) restarts it on demand.
+let loopScheduled = false;
+
+function wake() {
+  if (loopScheduled) return;
+  loopScheduled = true;
+  requestAnimationFrame(animate);
+}
+
 function animate() {
   if (!animating) {
-    requestAnimationFrame(animate);
+    // Modal is open: stop burning frames entirely. closeModal() wakes us back up.
+    loopScheduled = false;
     return;
   }
 
@@ -564,9 +604,22 @@ function animate() {
     card.style.opacity = opacity;
   });
 
-  if (Math.abs(scrollVelocity) < 0.01 && Math.abs(virtualIndex - Math.round(virtualIndex)) < 0.01) {
+  // scrollVelocity is hard-zeroed above once it decays below 0.001, so
+  // checking it against exactly 0 here is safe, not just "small enough."
+  // The 0.01 threshold matches the precision the old unconditional
+  // localStorage write already used — at the 0.08/frame easing factor, a
+  // much tighter epsilon (e.g. 0.0005) takes ~1s of imperceptible sub-pixel
+  // settling to satisfy, which would keep the "idle" loop alive far longer
+  // than any visible motion actually lasts.
+  const settled = !isTouching && scrollVelocity === 0 &&
+                  Math.abs(virtualIndex - Math.round(virtualIndex)) < 0.01;
+
+  if (settled) {
     localStorage.setItem('sw-index', Math.round(virtualIndex));
+    loopScheduled = false; // fully at rest — an input handler's wake() resumes us
+    return;
   }
+
   requestAnimationFrame(animate);
 }
 

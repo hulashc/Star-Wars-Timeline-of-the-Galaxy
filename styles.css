@@ -61,6 +61,7 @@
 html, body {
   width: 100%; height: 100%;
   overflow: hidden;
+  overscroll-behavior-y: none; /* stop the pull-to-refresh gesture Chrome/Android triggers on downward drags */
   background: var(--color-bg);
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: var(--color-text);
@@ -70,6 +71,10 @@ html, body {
 .stage {
   position: fixed; top: var(--chrome-h); left: 0; right: 0; bottom: 0;
   pointer-events: none;
+  /* Tell the browser this area owns its own touch gestures (drag/swipe drive
+     the rolodex in JS) instead of using them for native scroll/refresh —
+     paired with the touchmove preventDefault() in app.js for full coverage. */
+  touch-action: none;
 }
 
 .rolodex-container {
