@@ -843,6 +843,478 @@ var COMICS_DATA = {
       "publisher": "Dark Horse Comics", "format": "5-issue limited series",
       "release": "2012",
       "note": "As the Mandalorian War reaches its climax, Zayne must decide where he truly stands before the fighting consumes everyone he cares about."
+    },
+
+    // ── The Old Republic ──────────────────────────────────────────
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "Threat of Peace",
+      "title": "The Old Republic", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "3-issue series",
+      "release": "2010",
+      "note": "With the ink barely dry on the Treaty of Coruscant, Jedi scatter across the galaxy to convince war-weary factions on both sides to lay down their arms."
+    },
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "Threat of Peace",
+      "title": "The Old Republic", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "3-issue series",
+      "release": "2010",
+      "note": "Jedi Master Dar'Nala and her former Padawan Satele Shan uncover a sinister plot threatening to unravel the fragile peace."
+    },
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "Threat of Peace",
+      "title": "The Old Republic", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "3-issue series",
+      "release": "2010",
+      "note": "When Darth Angral's fleet moves against Coruscant itself, Satele Shan races to expose the conspirators before the treaty collapses into renewed war."
+    },
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "Blood of the Empire",
+      "title": "The Old Republic", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "3-issue series",
+      "release": "2010",
+      "note": "Sith apprentice Teneb Kel leads his master's forces to a hard-won victory, catching the eye of the Emperor himself."
+    },
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "Blood of the Empire",
+      "title": "The Old Republic", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "3-issue series",
+      "release": "2010",
+      "note": "Recalled before the Dark Council, Teneb is forced to duel his own master and given an impossible task: hunt down the Emperor's rogue apprentice."
+    },
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "Blood of the Empire",
+      "title": "The Old Republic", "issue": "#6",
+      "publisher": "Dark Horse Comics", "format": "3-issue series",
+      "release": "2010",
+      "note": "The hunt leads Teneb back to Korriban, where a betrayal threatens to expose the Sith Empire's darkest secrets to the Republic."
+    },
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "The Lost Suns",
+      "title": "The Old Republic", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "Elite Republic spy Theron Shan is assigned to track down a renegade Jedi Master whose rumors threaten to reignite war with the Sith Empire."
+    },
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "The Lost Suns",
+      "title": "The Old Republic", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "Theron's investigation forces him to work alongside a Jedi Master who may no longer be entirely sane."
+    },
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "The Lost Suns",
+      "title": "The Old Republic", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "The trail leads into the murky criminal underworld and toward secrets buried since the treaty that ended the Great Galactic War."
+    },
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "The Lost Suns",
+      "title": "The Old Republic", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "Interrogated by the Sith, the old Jedi Ngani Zho reveals fragments of his hidden past fighting the Empire."
+    },
+    {
+      "year": 3653, "era": "BBY",
+      "age": "The Old Republic", "arc": "The Lost Suns",
+      "title": "The Old Republic", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "Theron uncovers the truth behind the mysterious \"Sun Razer\" stations and the dark bargain that bought the galaxy its uneasy peace."
+    },
+
+    // ── Lost Tribe of the Sith ────────────────────────────────────
+    {
+      "year": 2974, "era": "BBY",
+      "age": "Lost Tribe of the Sith",
+      "title": "Lost Tribe of the Sith: Spiral", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "On the remote world of Kesh, outcast Parlan Spinner disrupts an anniversary parade and makes a botched attempt on the life of Grand Lord Varner Hilts."
+    },
+    {
+      "year": 2974, "era": "BBY",
+      "age": "Lost Tribe of the Sith",
+      "title": "Lost Tribe of the Sith: Spiral", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Sith princess Takara Hilts apprehends her father's would-be assassin, unaware of the ancient evil Parlan has unwittingly unleashed."
+    },
+    {
+      "year": 2974, "era": "BBY",
+      "age": "Lost Tribe of the Sith",
+      "title": "Lost Tribe of the Sith: Spiral", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "The freed Dark Jedi Baron Remulus Dreypa's monstrous Leviathans begin tearing through the Lost Tribe's territory."
+    },
+    {
+      "year": 2974, "era": "BBY",
+      "age": "Lost Tribe of the Sith",
+      "title": "Lost Tribe of the Sith: Spiral", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Former enemies Parlan and Takara are forced into an uneasy alliance against Dreypa's rampaging creations."
+    },
+    {
+      "year": 2974, "era": "BBY",
+      "age": "Lost Tribe of the Sith",
+      "title": "Lost Tribe of the Sith: Spiral", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Parlan and Takara race to stop Dreypa before his search for a hidden ancient Jedi starship dooms the entire Lost Tribe."
+    },
+
+    // ── Knight Errant ─────────────────────────────────────────────
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2010",
+      "note": "Jedi Knight Kerra Holt survives a disastrous mission deep in Sith-held territory on Chelloa."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2010",
+      "note": "Kerra makes contact with Gorlan Palladane, a former Jedi now leading the Chelloan resistance."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "Caught between rival Sith Lords Daiman and Odion, Kerra realizes the people of Chelloa need saving more than the Sith need defeating."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "As Daiman and Odion's schemes collide, Chelloa hurtles toward catastrophe."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "In the wake of a climactic apocalypse, Kerra and Gorlan fight to evacuate Chelloa's survivors to the safety of Republic space."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant: Deluge", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "A distress call pulls Kerra Holt back to her homeworld of Aquilaris Minor, only to find it under invasion by the Hutt crime lord Zodoh."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant: Deluge", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "Kerra reunites with childhood friends among the Seacroppers' Guild, many of them numbed by an addictive new narcotic called Deluge."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant: Deluge", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "Three factions — Sith Lord Daiman, Hutt lord Zodoh, and the Republic's Grace Command — clash for control of the Grumani sector."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant: Deluge", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "The spice trade at the heart of Aquilaris's suffering proves to be only one piece of a much larger power struggle."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant: Deluge", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "Kerra fights to free her homeworld before it's consumed by the three-way war closing in around it."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant: Escape", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Kerra Holt sets out on a personal quest to learn the fate of the parents she lost during the Sith invasion of Aquilaris."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant: Escape", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "The search leads Kerra to infiltrate the Odionate, the realm of the nihilistic Sith Lord Odion."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant: Escape", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Kerra discovers a Sith expedition is hunting for the Helm of Ieldis, an ancient and dangerous artifact."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant: Escape", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Odion's plans for galactic domination edge closer to fruition as Kerra digs deeper into his realm."
+    },
+    {
+      "year": 1032, "era": "BBY",
+      "age": "Knight Errant",
+      "title": "Knight Errant: Escape", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Kerra's search for her parents collides with the fate of the entire Odionate in the series' final confrontation."
+    },
+
+    // ── Jedi vs. Sith ─────────────────────────────────────────────
+    {
+      "year": 1000, "era": "BBY",
+      "age": "Jedi vs. Sith",
+      "title": "Jedi vs. Sith", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "6-issue limited series",
+      "release": "2001",
+      "note": "A thousand years before the Clone Wars, the New Sith Wars reach their bloody climax at the Battle of Ruusan."
+    },
+    {
+      "year": 1000, "era": "BBY",
+      "age": "Jedi vs. Sith",
+      "title": "Jedi vs. Sith", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "6-issue limited series",
+      "release": "2001",
+      "note": "Three young Force-sensitive cousins are swept into the final campaign between the Jedi's Army of Light and the Sith's Brotherhood of Darkness."
+    },
+    {
+      "year": 1000, "era": "BBY",
+      "age": "Jedi vs. Sith",
+      "title": "Jedi vs. Sith", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "6-issue limited series",
+      "release": "2001",
+      "note": "Sith Lords Kaan and Bane clash bitterly over how the war against the Jedi should be waged."
+    },
+    {
+      "year": 1000, "era": "BBY",
+      "age": "Jedi vs. Sith",
+      "title": "Jedi vs. Sith", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "6-issue limited series",
+      "release": "2001",
+      "note": "Desperate to break the deadlock, Lord Kaan turns to a Force technique devastating enough to destroy both armies at once."
+    },
+    {
+      "year": 1000, "era": "BBY",
+      "age": "Jedi vs. Sith",
+      "title": "Jedi vs. Sith", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "6-issue limited series",
+      "release": "2001",
+      "note": "The thought bomb detonates at Ruusan, annihilating the Brotherhood of Darkness and the Army of Light alike."
+    },
+    {
+      "year": 1000, "era": "BBY",
+      "age": "Jedi vs. Sith",
+      "title": "Jedi vs. Sith", "issue": "#6",
+      "publisher": "Dark Horse Comics", "format": "6-issue limited series",
+      "release": "2001",
+      "note": "The sole Sith survivor, Darth Bane, takes on an apprentice and reforges the Sith into a hidden order of two: a master and an apprentice."
+    },
+
+    // ── Jedi: The Dark Side ───────────────────────────────────────
+    {
+      "year": 53, "era": "BBY",
+      "age": "Jedi: The Dark Side", "arc": "Jedi: The Dark Side",
+      "title": "Jedi: The Dark Side", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "The Jedi Council sends Qui-Gon Jinn and his Padawan Xanatos to Xanatos's homeworld of Telos IV after the assassination of a priestess threatens civil war."
+    },
+    {
+      "year": 53, "era": "BBY",
+      "age": "Jedi: The Dark Side", "arc": "Jedi: The Dark Side",
+      "title": "Jedi: The Dark Side", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2011",
+      "note": "Xanatos's homecoming stirs up old resentments he thought long buried."
+    },
+    {
+      "year": 53, "era": "BBY",
+      "age": "Jedi: The Dark Side", "arc": "Jedi: The Dark Side",
+      "title": "Jedi: The Dark Side", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "A death in Xanatos's family pushes the Padawan closer to an edge Qui-Gon fears he can't pull him back from."
+    },
+    {
+      "year": 53, "era": "BBY",
+      "age": "Jedi: The Dark Side", "arc": "Jedi: The Dark Side",
+      "title": "Jedi: The Dark Side", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Qui-Gon realizes his own apprentice may now be more of a liability than an ally in preventing the coming war."
+    },
+    {
+      "year": 53, "era": "BBY",
+      "age": "Jedi: The Dark Side", "arc": "Jedi: The Dark Side",
+      "title": "Jedi: The Dark Side", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "5-issue limited series",
+      "release": "2012",
+      "note": "Civil war erupts on Telos IV, and Qui-Gon races to uncover the truth behind the unrest before it consumes the planet."
+    },
+
+    // ── Qui-Gon and Obi-Wan ───────────────────────────────────────
+    {
+      "year": 37, "era": "BBY",
+      "age": "Qui-Gon and Obi-Wan",
+      "title": "Qui-Gon and Obi-Wan: Last Stand on Ord Mantell", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "3-issue limited series",
+      "release": "2000",
+      "note": "When a cargo freighter vanishes en route to Coruscant, Qui-Gon Jinn and Obi-Wan Kenobi are sent to investigate."
+    },
+    {
+      "year": 37, "era": "BBY",
+      "age": "Qui-Gon and Obi-Wan",
+      "title": "Qui-Gon and Obi-Wan: Last Stand on Ord Mantell", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "3-issue limited series",
+      "release": "2001",
+      "note": "The trail leads to the lawless world of Ord Mantell, where Jedi are about as welcome as a bounty on their heads."
+    },
+    {
+      "year": 37, "era": "BBY",
+      "age": "Qui-Gon and Obi-Wan",
+      "title": "Qui-Gon and Obi-Wan: Last Stand on Ord Mantell", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "3-issue limited series",
+      "release": "2001",
+      "note": "The two Jedi uncover a renegade Jedi controlling the planet's populace while smuggling Mantellian Savrips off-world."
+    },
+    {
+      "year": 34, "era": "BBY",
+      "age": "Qui-Gon and Obi-Wan",
+      "title": "Qui-Gon and Obi-Wan: The Aurorient Express", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "2-issue limited series",
+      "release": "2002",
+      "note": "A luxury cloud cruiser, the Aurorient Express, spins out of control on a collision course with the city below."
+    },
+    {
+      "year": 34, "era": "BBY",
+      "age": "Qui-Gon and Obi-Wan",
+      "title": "Qui-Gon and Obi-Wan: The Aurorient Express", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "2-issue limited series",
+      "release": "2002",
+      "note": "Qui-Gon and Obi-Wan board the runaway liner, racing to regain control before it crashes over Yorn Skot."
+    },
+
+    // ── Republic ──────────────────────────────────────────────────
+    {
+      "year": 33, "era": "BBY",
+      "age": "Republic",
+      "title": "Republic: Prelude to Rebellion", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "83-issue ongoing series",
+      "release": "1998",
+      "note": "Jedi Master Ki-Adi-Mundi returns to his homeworld to find his people, including his own family, under attack by raiders."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Republic",
+      "title": "Republic: Prelude to Rebellion", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "83-issue ongoing series",
+      "release": "1999",
+      "note": "Ki-Adi-Mundi rallies his people's defense as the raiders' assault intensifies."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Republic",
+      "title": "Republic: Prelude to Rebellion", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "83-issue ongoing series",
+      "release": "1999",
+      "note": "The Jedi Master uncovers the forces truly behind the raids threatening his homeworld."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Republic",
+      "title": "Republic: Prelude to Rebellion", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "83-issue ongoing series",
+      "release": "1999",
+      "note": "With his family's safety on the line, Ki-Adi-Mundi takes the fight directly to his people's attackers."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Republic",
+      "title": "Republic: Prelude to Rebellion", "issue": "#5",
+      "publisher": "Dark Horse Comics", "format": "83-issue ongoing series",
+      "release": "1999",
+      "note": "Ki-Adi-Mundi's defense of his homeworld reaches its climax."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Republic",
+      "title": "Republic: Prelude to Rebellion", "issue": "#6",
+      "publisher": "Dark Horse Comics", "format": "83-issue ongoing series",
+      "release": "1999",
+      "note": "His success at defending his people earns Ki-Adi-Mundi a seat on the Jedi Council."
+    },
+
+    // ── Jedi Council ──────────────────────────────────────────────
+    {
+      "year": 33, "era": "BBY",
+      "age": "Jedi Council",
+      "title": "Jedi Council: Acts of War", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2000",
+      "note": "Mace Windu dispatches two Jedi to broker peace with the volatile, mind-trick-resistant Yinchorri — and only their bodies come back."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Jedi Council",
+      "title": "Jedi Council: Acts of War", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2000",
+      "note": "Jedi Master Adi Gallia leads a task force into Yinchorri space to uncover who's arming the aggressive species."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Jedi Council",
+      "title": "Jedi Council: Acts of War", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2000",
+      "note": "On the watery moon of Yitheeth, the Jedi capture a Devaronian mercenary tied to a hidden conspiracy."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Jedi Council",
+      "title": "Jedi Council: Acts of War", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2000",
+      "note": "The Jedi Council uncovers a Sith plot to pit the Yinchorri against the Republic and its Jedi defenders."
     }
   ],
   "canon": [

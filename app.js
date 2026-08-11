@@ -41,6 +41,10 @@ const modalSummary = document.getElementById('modal-summary');
 const arcNav = document.getElementById('arc-nav');
 const arcNavList = document.getElementById('arc-nav-list');
 const arcNavToggle = document.getElementById('arc-nav-toggle');
+const scrubber = document.getElementById('scrubber');
+const scrubberTrack = document.getElementById('scrubber-track');
+const scrubberThumb = document.getElementById('scrubber-thumb');
+const scrubberTooltip = document.getElementById('scrubber-tooltip');
 
 /* ==========================================================
    SECTION 3: HELPERS
@@ -135,6 +139,7 @@ function initApp() {
   loadedData = sortAllEras(COMICS_DATA);
   reapplyFilters();
   buildArcNav();
+  buildScrubber();
   wake();
 }
 
@@ -249,7 +254,9 @@ function switchEra(newIndex) {
   cardStack.style.opacity = '0.3';
   reapplyFilters();
   updateEraBar();
+  arcNavSearch.value = ''; // previous query's matches are meaningless in the other era
   buildArcNav();
+  buildScrubber();
   wake(); // the freshly rebuilt cards need an animate() pass to be positioned
   requestAnimationFrame(() => { cardStack.style.opacity = ''; });
 }
@@ -275,6 +282,7 @@ function updateInfo() {
   infoSummary.textContent = c.note;
   updateEraBar();
   updateArcNavActive(c);
+  updateScrubberThumb();
 }
 
 /* ==========================================================
@@ -307,48 +315,145 @@ modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); }
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
 
 /* ==========================================================
-   SECTION 8: ARC NAV — lets you jump straight to a story arc
-   ("age") instead of scrolling one card at a time through all
-   106 issues.
+   SECTION 8: ARC NAV — lets you jump straight to a series or, for
+   series with named story arcs, a specific arc — instead of
+   scrolling one card at a time through all 163 issues.
    ========================================================== */
 
-function buildArcNav() {
-  arcNavList.textContent = '';
-  const ascending = loadedData[currentEra]; // chronological, oldest first
-  const seen = new Set();
+// Single pass over the ascending (chronological) list for the current era,
+// grouping by `age` (series) and then by `arc` (a null bucket covers issues
+// with no `arc` field). Whether a series gets a two-level tree is decided
+// purely by how many distinct arcs it has — no series is special-cased.
+function buildNavTree(ascending) {
+  const order = [];
+  const map = new Map();
   ascending.forEach(comic => {
-    if (seen.has(comic.age)) return;
-    seen.add(comic.age);
+    let s = map.get(comic.age);
+    if (!s) {
+      s = { age: comic.age, issues: [], arcOrder: [], arcMap: new Map() };
+      map.set(comic.age, s);
+      order.push(comic.age);
+    }
+    s.issues.push(comic);
+    const key = comic.arc || null;
+    let bucket = s.arcMap.get(key);
+    if (!bucket) {
+      bucket = { arc: key, issues: [] };
+      s.arcMap.set(key, bucket);
+      s.arcOrder.push(key);
+    }
+    bucket.issues.push(comic);
+  });
+  return order.map(age => map.get(age));
+}
 
-    const count = ascending.filter(c => c.age === comic.age).length;
-    const first = ascending.find(c => c.age === comic.age);
-    const last = [...ascending].reverse().find(c => c.age === comic.age);
+function issueRangeMeta(issues) {
+  const count = issues.length;
+  const first = issues[0], last = issues[issues.length - 1];
+  const yearLabel = first.year === last.year && first.era === last.era
+    ? `${first.year} ${first.era}`
+    : `${first.year} ${first.era} – ${last.year} ${last.era}`;
+  return `${count} issue${count === 1 ? '' : 's'} · ${yearLabel}`;
+}
 
-    const item = document.createElement('button');
-    item.className = 'arc-nav-item';
-    item.dataset.age = comic.age;
+function textMatches(q, ...parts) {
+  return parts.some(p => p && String(p).toLowerCase().includes(q));
+}
+function seriesMatchesQuery(series, q) {
+  return textMatches(q, series.age) || series.issues.some(c => textMatches(q, c.issue, c.title, c.arc));
+}
+function arcMatchesQuery(age, bucket, q) {
+  return textMatches(q, age, bucket.arc) || bucket.issues.some(c => textMatches(q, c.issue, c.title));
+}
 
+function makeNavRow(titleText, metaText, onClick, extraClass) {
+  const item = document.createElement('button');
+  item.className = 'arc-nav-item' + (extraClass ? ' ' + extraClass : '');
+  const title = document.createElement('span');
+  title.className = 'arc-nav-item-title';
+  title.textContent = titleText;
+  const meta = document.createElement('span');
+  meta.className = 'arc-nav-item-meta';
+  meta.textContent = metaText;
+  item.appendChild(title);
+  item.appendChild(meta);
+  item.addEventListener('click', onClick);
+  return item;
+}
+
+function buildArcNav(query = '') {
+  arcNavList.textContent = '';
+  const q = query.trim().toLowerCase();
+  const tree = buildNavTree(loadedData[currentEra]);
+
+  tree.forEach(series => {
+    const distinctArcs = series.arcOrder.filter(k => k !== null);
+    const useArcLevel = distinctArcs.length >= 2;
+
+    if (!useArcLevel) {
+      if (q && !seriesMatchesQuery(series, q)) return;
+      const row = makeNavRow(series.age, issueRangeMeta(series.issues), () => jumpToAge(series.age));
+      row.dataset.age = series.age;
+      arcNavList.appendChild(row);
+      return;
+    }
+
+    const matchingBuckets = series.arcOrder
+      .map(k => series.arcMap.get(k))
+      .filter(b => !q || arcMatchesQuery(series.age, b, q));
+    if (q && matchingBuckets.length === 0) return;
+
+    const details = document.createElement('details');
+    details.className = 'arc-nav-group';
+    details.dataset.age = series.age;
+    if (q) details.open = true; // reveal matches while searching
+
+    const summary = document.createElement('summary');
+    summary.className = 'arc-nav-item arc-nav-group-summary';
+
+    const label = document.createElement('span');
+    label.className = 'arc-nav-item-label';
     const title = document.createElement('span');
     title.className = 'arc-nav-item-title';
-    title.textContent = comic.age;
-
+    title.textContent = series.age;
     const meta = document.createElement('span');
     meta.className = 'arc-nav-item-meta';
-    const yearLabel = first.year === last.year && first.era === last.era
-      ? `${first.year} ${first.era}`
-      : `${first.year} ${first.era} – ${last.year} ${last.era}`;
-    meta.textContent = `${count} issue${count === 1 ? '' : 's'} · ${yearLabel}`;
+    meta.textContent = issueRangeMeta(series.issues);
+    label.appendChild(title);
+    label.appendChild(meta);
+    label.addEventListener('click', (e) => {
+      // Clicking the title/meta should jump to the series, not just toggle
+      // the <details> open state — stop that default before it bubbles.
+      e.preventDefault();
+      e.stopPropagation();
+      jumpToAge(series.age);
+    });
 
-    item.appendChild(title);
-    item.appendChild(meta);
-    item.addEventListener('click', () => jumpToAge(comic.age));
-    arcNavList.appendChild(item);
+    const chevron = document.createElement('span');
+    chevron.className = 'arc-nav-chevron';
+    chevron.setAttribute('aria-hidden', 'true');
+
+    summary.appendChild(label);
+    summary.appendChild(chevron);
+    details.appendChild(summary);
+
+    const children = document.createElement('div');
+    children.className = 'arc-nav-children';
+    matchingBuckets.forEach(bucket => {
+      const arcLabel = bucket.arc || 'Other Issues';
+      const child = makeNavRow(arcLabel, issueRangeMeta(bucket.issues),
+        () => jumpToArc(series.age, bucket.arc), 'arc-nav-item-child');
+      child.dataset.age = series.age;
+      child.dataset.arc = bucket.arc || '';
+      children.appendChild(child);
+    });
+    details.appendChild(children);
+    arcNavList.appendChild(details);
   });
 }
 
-function jumpToAge(age) {
-  const idx = filteredData.findIndex(c => c.age === age);
-  if (idx === -1) return;
+function jumpToFilteredIndex(idx) {
+  if (idx < 0 || idx > filteredData.length - 1) return;
   virtualIndex = idx;
   scrollVelocity = 0;
   lastRenderedCenter = -1;
@@ -358,9 +463,38 @@ function jumpToAge(age) {
   if (IS_MOBILE) closeArcNav();
 }
 
+// filteredData is loadedData[currentEra] reversed (newest first), so an
+// ascending-array match at index i lands at (length - 1 - i) in filteredData.
+function jumpToAge(age) {
+  const ascending = loadedData[currentEra];
+  const i = ascending.findIndex(c => c.age === age);
+  if (i === -1) return;
+  jumpToFilteredIndex(ascending.length - 1 - i);
+}
+
+function jumpToArc(age, arc) {
+  const ascending = loadedData[currentEra];
+  const i = ascending.findIndex(c => c.age === age && (c.arc || null) === (arc || null));
+  if (i === -1) return;
+  jumpToFilteredIndex(ascending.length - 1 - i);
+}
+
 function updateArcNavActive(comic) {
   Array.from(arcNavList.children).forEach(el => {
-    el.classList.toggle('active', comic && el.dataset.age === comic.age);
+    if (el.tagName === 'BUTTON') {
+      el.classList.toggle('active', !!comic && el.dataset.age === comic.age);
+      return;
+    }
+    const isCurrentSeries = !!comic && el.dataset.age === comic.age;
+    const summary = el.querySelector(':scope > summary');
+    let anyChildActive = false;
+    el.querySelectorAll(':scope > .arc-nav-children > .arc-nav-item-child').forEach(child => {
+      const match = isCurrentSeries && (comic.arc || '') === (child.dataset.arc || '');
+      child.classList.toggle('active', match);
+      if (match) anyChildActive = true;
+    });
+    summary.classList.toggle('active', isCurrentSeries && !anyChildActive);
+    if (anyChildActive && !el.open) el.open = true;
   });
 }
 
@@ -376,6 +510,151 @@ function closeArcNav() {
 }
 arcNavToggle.addEventListener('click', () => {
   arcNav.classList.contains('open') ? closeArcNav() : openArcNav();
+});
+
+const arcNavSearch = document.getElementById('arc-nav-search');
+let arcNavSearchDebounce = null;
+arcNavSearch.addEventListener('input', () => {
+  clearTimeout(arcNavSearchDebounce);
+  arcNavSearchDebounce = setTimeout(() => buildArcNav(arcNavSearch.value), 80);
+});
+
+/* ==========================================================
+   SECTION 8.5: SCRUBBER — a video-style seek bar across the whole
+   current era, complementing the arc-nav's named jump targets with
+   fast drag/click positioning. Every series gets a guaranteed
+   minimum-width segment (via flex-basis) so even a 4-issue series
+   stays clickable next to a 50-issue one.
+   ========================================================== */
+
+let scrubSegments = []; // [{ age, ascStart, count, el }], ascending order
+
+// filteredData is loadedData[currentEra] reversed (newest first), so an
+// ascending-array index maps to (length - 1 - i) in filteredData — same
+// conversion jumpToAge()/jumpToArc() use.
+function ascIndexToVirtual(ascIndex) {
+  return filteredData.length - 1 - ascIndex;
+}
+
+function buildScrubber() {
+  scrubberTrack.querySelectorAll('.scrub-segment').forEach(el => el.remove());
+  scrubSegments = [];
+
+  const ascending = loadedData[currentEra];
+  if (ascending.length < 2) {
+    scrubber.hidden = true;
+    return;
+  }
+  scrubber.hidden = false;
+
+  let i = 0;
+  while (i < ascending.length) {
+    const age = ascending[i].age;
+    const ascStart = i;
+    let count = 0;
+    while (i < ascending.length && ascending[i].age === age) { i++; count++; }
+
+    const el = document.createElement('div');
+    el.className = 'scrub-segment';
+    el.style.flexGrow = String(count);
+    el.dataset.age = age;
+    // No click listener here — tap-vs-drag is disambiguated once, at the
+    // track level (see the pointerdown/pointermove/pointerup block below),
+    // since setPointerCapture() on the track can redirect where a native
+    // click would otherwise land.
+    scrubberTrack.appendChild(el);
+    scrubSegments.push({ age, ascStart, count, el });
+  }
+  updateScrubberThumb();
+}
+
+function updateScrubberThumb() {
+  if (scrubber.hidden || filteredData.length < 2) return;
+  const pct = (filteredData.length - 1 - virtualIndex) / (filteredData.length - 1) * 100;
+  scrubberThumb.style.left = `${Math.max(0, Math.min(100, pct))}%`;
+}
+
+// Given a clientX over the track, find which ascending issue it corresponds
+// to (segments are proportionally sized by flex-grow, so real DOM geometry —
+// not assumed math — is the source of truth for hit-testing).
+function ascIndexFromClientX(clientX) {
+  const rect = scrubberTrack.getBoundingClientRect();
+  const x = Math.max(rect.left, Math.min(rect.right, clientX));
+  for (const seg of scrubSegments) {
+    const segRect = seg.el.getBoundingClientRect();
+    if (x >= segRect.left && x <= segRect.right) {
+      const frac = seg.count <= 1 ? 0 : (x - segRect.left) / segRect.width;
+      return seg.ascStart + Math.min(seg.count - 1, Math.floor(frac * seg.count));
+    }
+  }
+  // Past the last segment's edge (rounding) — clamp to the nearest end.
+  return x <= rect.left ? 0 : scrubSegments.reduce((a, s) => a + s.count, 0) - 1;
+}
+
+function showScrubberTooltip(clientX, ascIndex) {
+  const ascending = loadedData[currentEra];
+  const c = ascending[ascIndex];
+  if (!c) return;
+  scrubberTooltip.textContent = `${c.age} · ${c.issue}`;
+  scrubberTooltip.style.left = `${clientX}px`;
+  scrubberTooltip.classList.add('visible');
+}
+function hideScrubberTooltip() {
+  scrubberTooltip.classList.remove('visible');
+}
+
+let scrubDragStartX = 0;
+let scrubDragMoved = false;
+
+scrubberTrack.addEventListener('pointerdown', (e) => {
+  scrubberTrack.setPointerCapture(e.pointerId);
+  scrubDragStartX = e.clientX;
+  scrubDragMoved = false;
+  isScrubbing = true;
+  scrollVelocity = 0;
+  wake();
+  showScrubberTooltip(e.clientX, ascIndexFromClientX(e.clientX));
+});
+
+scrubberTrack.addEventListener('pointermove', (e) => {
+  if (isScrubbing) {
+    if (!scrubDragMoved && Math.abs(e.clientX - scrubDragStartX) > SCRUB_DRAG_THRESHOLD) {
+      scrubDragMoved = true;
+    }
+    // Only actually move the deck once the drag threshold is crossed — a
+    // plain tap (see pointerup below) shouldn't nudge virtualIndex at all.
+    if (scrubDragMoved) {
+      const ascIdx = ascIndexFromClientX(e.clientX);
+      virtualIndex = ascIndexToVirtual(ascIdx);
+      showScrubberTooltip(e.clientX, ascIdx);
+    }
+    return;
+  }
+  if (e.pointerType === 'mouse') {
+    showScrubberTooltip(e.clientX, ascIndexFromClientX(e.clientX));
+  }
+});
+
+scrubberTrack.addEventListener('pointerup', (e) => {
+  // A tap (no drag threshold crossed) jumps straight to that position,
+  // same as clicking an arc-nav entry — computed from pointer position
+  // rather than a native click event, since setPointerCapture() above can
+  // redirect where a click would otherwise land.
+  if (!scrubDragMoved) {
+    virtualIndex = ascIndexToVirtual(ascIndexFromClientX(e.clientX));
+    scrollVelocity = 0;
+    lastRenderedCenter = -1;
+    renderWindow();
+    updateInfo();
+  }
+  isScrubbing = false;
+  hideScrubberTooltip();
+  try { scrubberTrack.releasePointerCapture(e.pointerId); } catch (err) {}
+  wake();
+});
+
+scrubberTrack.addEventListener('pointerleave', () => {
+  if (!isScrubbing) hideScrubberTooltip();
 });
 
 /* ==========================================================
@@ -421,6 +700,7 @@ function hapticTick() {
 
 let scrollVelocity = 0;
 let isTouching = false;
+let isScrubbing = false;
 let touchAnchorY = 0;
 let touchAnchorX = 0;
 let touchAnchorIndex = 0;
@@ -430,6 +710,7 @@ let lastHapticCenter = -1;
 
 const TOUCH_SENSITIVITY = 0.01;
 const SWIPE_THRESHOLD = 30;
+const SCRUB_DRAG_THRESHOLD = 4; // px of pointer movement before a press becomes a drag, not a click
 
 window.addEventListener('wheel', (e) => {
   scrollVelocity += e.deltaY * 0.002;
@@ -437,7 +718,7 @@ window.addEventListener('wheel', (e) => {
 }, { passive: true });
 
 window.addEventListener('touchstart', (e) => {
-  if (e.target.closest('.info-panel') || e.target.closest('.modal-overlay') || e.target.closest('.arc-nav') || e.target.closest('.arc-nav-toggle')) return;
+  if (e.target.closest('.info-panel') || e.target.closest('.modal-overlay') || e.target.closest('.arc-nav') || e.target.closest('.arc-nav-toggle') || e.target.closest('.scrubber')) return;
   initAudio();
   touchAnchorX = e.touches[0].clientX;
   touchAnchorY = e.touches[0].clientY;
@@ -548,7 +829,7 @@ function animate() {
     return;
   }
 
-  if (!isTouching) {
+  if (!isTouching && !isScrubbing) {
     scrollVelocity *= 0.82;
     if (Math.abs(scrollVelocity) < 0.001) scrollVelocity = 0;
     virtualIndex += scrollVelocity;
@@ -603,6 +884,10 @@ function animate() {
     card.style.transform = `rotateX(${rotateX}deg) translateZ(${translateZ}px) translateY(${translateY}px)`;
     card.style.opacity = opacity;
   });
+
+  // Runs every animated frame (not just on integer-card changes) so the
+  // scrubber thumb glides in step with the eased/momentum card motion.
+  updateScrubberThumb();
 
   // scrollVelocity is hard-zeroed above once it decays below 0.001, so
   // checking it against exactly 0 here is safe, not just "small enough."

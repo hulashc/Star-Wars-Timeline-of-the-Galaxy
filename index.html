@@ -29,7 +29,15 @@
 
   <button class="arc-nav-toggle" id="arc-nav-toggle" aria-label="Browse by story arc" aria-expanded="false">&#9776;</button>
   <nav class="arc-nav" id="arc-nav" aria-hidden="true">
+    <input type="search" id="arc-nav-search" class="arc-nav-search" placeholder="Search issues, series, arcs…" aria-label="Search comics" />
     <div class="arc-nav-list" id="arc-nav-list"></div>
+  </nav>
+
+  <nav class="scrubber" id="scrubber" aria-label="Jump to a point in the timeline">
+    <div class="scrubber-track" id="scrubber-track">
+      <div class="scrubber-thumb" id="scrubber-thumb" aria-hidden="true"></div>
+    </div>
+    <div class="scrubber-tooltip" id="scrubber-tooltip"></div>
   </nav>
 
   <!-- ===== STAGE ===== -->
