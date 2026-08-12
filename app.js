@@ -136,10 +136,21 @@ function renderMetaRows(container, comic) {
 
 function initApp() {
   loadedData = sortAllEras(COMICS_DATA);
+  applyEraAccent();
   reapplyFilters();
   buildArcNav();
   buildScrubber();
   wake();
+}
+
+// Legends gets an amber "cockpit-glow" accent, Canon a cool starfield blue —
+// every existing var(--color-accent) consumer (era pill, active arc-nav row,
+// scrub label, card hover border) picks this up with no other CSS changes.
+function applyEraAccent() {
+  document.documentElement.style.setProperty(
+    '--color-accent',
+    currentEra === 'legends' ? 'var(--color-accent-legends)' : 'var(--color-accent-canon)'
+  );
 }
 
 // Chronological order is authored by hand in comics.js (for readable diffs),
@@ -248,6 +259,7 @@ function switchEra(newIndex) {
   currentEraIndex = newIndex;
   currentEra = eras[currentEraIndex];
   localStorage.setItem('sw-era', currentEraIndex);
+  applyEraAccent();
   virtualIndex = 0;
   scrollVelocity = 0;
   cardStack.style.opacity = '0.3';
