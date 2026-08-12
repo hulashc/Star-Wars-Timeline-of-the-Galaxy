@@ -43,8 +43,7 @@ const arcNavList = document.getElementById('arc-nav-list');
 const arcNavToggle = document.getElementById('arc-nav-toggle');
 const scrubber = document.getElementById('scrubber');
 const scrubberTrack = document.getElementById('scrubber-track');
-const scrubberThumb = document.getElementById('scrubber-thumb');
-const scrubberTooltip = document.getElementById('scrubber-tooltip');
+const scrubberLabels = document.getElementById('scrubber-labels');
 
 /* ==========================================================
    SECTION 3: HELPERS
@@ -282,7 +281,6 @@ function updateInfo() {
   infoSummary.textContent = c.note;
   updateEraBar();
   updateArcNavActive(c);
-  updateScrubberThumb();
 }
 
 /* ==========================================================
@@ -520,25 +518,30 @@ arcNavSearch.addEventListener('input', () => {
 });
 
 /* ==========================================================
-   SECTION 8.5: SCRUBBER — a video-style seek bar across the whole
-   current era, complementing the arc-nav's named jump targets with
-   fast drag/click positioning. Every series gets a guaranteed
-   minimum-width segment (via flex-basis) so even a 4-issue series
-   stays clickable next to a 50-issue one.
+   SECTION 8.5: SCRUBBER — a "mode carousel" like the iPhone Camera app's
+   PHOTO/VIDEO/PANO strip: the current series sits centered, bold and
+   bright; neighbors shrink and dim with distance. Swipe/drag pages between
+   series with a haptic tick per series crossed and rubber-band resistance
+   past the first/last one; tap any visible label to jump straight to it.
+   Fine navigation within a series is still the rolodex's job — this only
+   ever snaps at series granularity.
    ========================================================== */
 
-let scrubSegments = []; // [{ age, ascStart, count, el }], ascending order
+let scrubSeries = []; // [{ age, ascStart, count, el }], ascending order
 
-// filteredData is loadedData[currentEra] reversed (newest first), so an
-// ascending-array index maps to (length - 1 - i) in filteredData — same
-// conversion jumpToAge()/jumpToArc() use.
-function ascIndexToVirtual(ascIndex) {
-  return filteredData.length - 1 - ascIndex;
-}
+let carouselIndex = 0;        // float, series-granularity position
+let isCarouselDragging = false;
+let carouselDragStartX = 0;
+let carouselDragAnchorIndex = 0;
+let carouselDragMoved = false;
+let lastCarouselHapticIdx = -1;
+
+const CAROUSEL_SLOT_WIDTH = IS_MOBILE ? 110 : 150; // px between adjacent series labels
+const CAROUSEL_DRAG_THRESHOLD = 4; // px of pointer movement before a press becomes a drag, not a tap
 
 function buildScrubber() {
-  scrubberTrack.querySelectorAll('.scrub-segment').forEach(el => el.remove());
-  scrubSegments = [];
+  scrubberLabels.textContent = '';
+  scrubSeries = [];
 
   const ascending = loadedData[currentEra];
   if (ascending.length < 2) {
@@ -555,106 +558,90 @@ function buildScrubber() {
     while (i < ascending.length && ascending[i].age === age) { i++; count++; }
 
     const el = document.createElement('div');
-    el.className = 'scrub-segment';
-    el.style.flexGrow = String(count);
+    el.className = 'scrub-label';
+    el.textContent = age;
     el.dataset.age = age;
-    // No click listener here — tap-vs-drag is disambiguated once, at the
-    // track level (see the pointerdown/pointermove/pointerup block below),
-    // since setPointerCapture() on the track can redirect where a native
-    // click would otherwise land.
-    scrubberTrack.appendChild(el);
-    scrubSegments.push({ age, ascStart, count, el });
+    scrubberLabels.appendChild(el);
+    scrubSeries.push({ age, ascStart, count, el });
   }
-  updateScrubberThumb();
+
+  const c = currentComic();
+  const idx = c ? scrubSeries.findIndex(s => s.age === c.age) : -1;
+  carouselIndex = idx === -1 ? 0 : idx;
+  layoutScrubberLabels();
 }
 
-function updateScrubberThumb() {
-  if (scrubber.hidden || filteredData.length < 2) return;
-  const pct = (filteredData.length - 1 - virtualIndex) / (filteredData.length - 1) * 100;
-  scrubberThumb.style.left = `${Math.max(0, Math.min(100, pct))}%`;
+// Positions/scales/fades every label relative to carouselIndex — mirrors how
+// the rolodex itself transforms each card relative to virtualIndex every frame.
+function layoutScrubberLabels() {
+  scrubSeries.forEach((s, i) => {
+    const offset = i - carouselIndex;
+    const absOffset = Math.abs(offset);
+    const scale = Math.max(0.55, 1 - absOffset * 0.16);
+    const opacity = Math.max(0.12, 1 - absOffset * 0.32);
+    s.el.style.transform = `translate(-50%, -50%) translateX(${offset * CAROUSEL_SLOT_WIDTH}px) scale(${scale})`;
+    s.el.style.opacity = opacity;
+    s.el.classList.toggle('current', absOffset < 0.5);
+  });
 }
 
-// Given a clientX over the track, find which ascending issue it corresponds
-// to (segments are proportionally sized by flex-grow, so real DOM geometry —
-// not assumed math — is the source of truth for hit-testing).
-function ascIndexFromClientX(clientX) {
+// Given a tap position, figure out which series label is nearest it — needs
+// the *current* carouselIndex since labels scroll, they aren't fixed to
+// absolute track positions the way the old flat scrubber's segments were.
+function seriesIndexNearestClientX(clientX) {
   const rect = scrubberTrack.getBoundingClientRect();
-  const x = Math.max(rect.left, Math.min(rect.right, clientX));
-  for (const seg of scrubSegments) {
-    const segRect = seg.el.getBoundingClientRect();
-    if (x >= segRect.left && x <= segRect.right) {
-      const frac = seg.count <= 1 ? 0 : (x - segRect.left) / segRect.width;
-      return seg.ascStart + Math.min(seg.count - 1, Math.floor(frac * seg.count));
-    }
-  }
-  // Past the last segment's edge (rounding) — clamp to the nearest end.
-  return x <= rect.left ? 0 : scrubSegments.reduce((a, s) => a + s.count, 0) - 1;
+  const centerX = rect.left + rect.width / 2;
+  const deltaSlots = (clientX - centerX) / CAROUSEL_SLOT_WIDTH;
+  const idx = Math.round(carouselIndex + deltaSlots);
+  return Math.max(0, Math.min(scrubSeries.length - 1, idx));
 }
-
-function showScrubberTooltip(clientX, ascIndex) {
-  const ascending = loadedData[currentEra];
-  const c = ascending[ascIndex];
-  if (!c) return;
-  scrubberTooltip.textContent = `${c.age} · ${c.issue}`;
-  scrubberTooltip.style.left = `${clientX}px`;
-  scrubberTooltip.classList.add('visible');
-}
-function hideScrubberTooltip() {
-  scrubberTooltip.classList.remove('visible');
-}
-
-let scrubDragStartX = 0;
-let scrubDragMoved = false;
 
 scrubberTrack.addEventListener('pointerdown', (e) => {
   scrubberTrack.setPointerCapture(e.pointerId);
-  scrubDragStartX = e.clientX;
-  scrubDragMoved = false;
-  isScrubbing = true;
-  scrollVelocity = 0;
+  carouselDragStartX = e.clientX;
+  carouselDragAnchorIndex = carouselIndex;
+  carouselDragMoved = false;
+  lastCarouselHapticIdx = Math.round(carouselIndex);
+  isCarouselDragging = true;
   wake();
-  showScrubberTooltip(e.clientX, ascIndexFromClientX(e.clientX));
 });
 
 scrubberTrack.addEventListener('pointermove', (e) => {
-  if (isScrubbing) {
-    if (!scrubDragMoved && Math.abs(e.clientX - scrubDragStartX) > SCRUB_DRAG_THRESHOLD) {
-      scrubDragMoved = true;
-    }
-    // Only actually move the deck once the drag threshold is crossed — a
-    // plain tap (see pointerup below) shouldn't nudge virtualIndex at all.
-    if (scrubDragMoved) {
-      const ascIdx = ascIndexFromClientX(e.clientX);
-      virtualIndex = ascIndexToVirtual(ascIdx);
-      showScrubberTooltip(e.clientX, ascIdx);
-    }
-    return;
-  }
-  if (e.pointerType === 'mouse') {
-    showScrubberTooltip(e.clientX, ascIndexFromClientX(e.clientX));
-  }
+  if (!isCarouselDragging) return;
+  const deltaX = carouselDragStartX - e.clientX; // matches the rolodex touch-drag's anchor-minus-current convention
+  if (!carouselDragMoved && Math.abs(deltaX) > CAROUSEL_DRAG_THRESHOLD) carouselDragMoved = true;
+  if (!carouselDragMoved) return;
+
+  const max = scrubSeries.length - 1;
+  let raw = carouselDragAnchorIndex + deltaX / CAROUSEL_SLOT_WIDTH;
+  // Rubber-band resistance past either end instead of a hard clamp — drag
+  // still moves it, just increasingly stiffly, and it springs back on release.
+  if (raw < 0) raw *= 0.35;
+  else if (raw > max) raw = max + (raw - max) * 0.35;
+  carouselIndex = raw;
+  layoutScrubberLabels();
+
+  const nearest = Math.round(Math.max(0, Math.min(max, carouselIndex)));
+  if (nearest !== lastCarouselHapticIdx) { lastCarouselHapticIdx = nearest; hapticTick(); }
 });
 
-scrubberTrack.addEventListener('pointerup', (e) => {
-  // A tap (no drag threshold crossed) jumps straight to that position,
-  // same as clicking an arc-nav entry — computed from pointer position
-  // rather than a native click event, since setPointerCapture() above can
-  // redirect where a click would otherwise land.
-  if (!scrubDragMoved) {
-    virtualIndex = ascIndexToVirtual(ascIndexFromClientX(e.clientX));
-    scrollVelocity = 0;
-    lastRenderedCenter = -1;
-    renderWindow();
-    updateInfo();
-  }
-  isScrubbing = false;
-  hideScrubberTooltip();
+function releaseCarouselDrag(e) {
+  isCarouselDragging = false;
   try { scrubberTrack.releasePointerCapture(e.pointerId); } catch (err) {}
-  wake();
-});
 
-scrubberTrack.addEventListener('pointerleave', () => {
-  if (!isScrubbing) hideScrubberTooltip();
+  const targetIdx = carouselDragMoved
+    ? Math.round(Math.max(0, Math.min(scrubSeries.length - 1, carouselIndex)))
+    : seriesIndexNearestClientX(e.clientX); // a tap jumps straight to whichever label is nearest
+  hapticTick(); // confirm the release/tap, same idea as a button-press tick
+  jumpToAge(scrubSeries[targetIdx].age); // animate()'s carousel-ease block (below) glides it visually into place
+}
+
+scrubberTrack.addEventListener('pointerup', releaseCarouselDrag);
+
+// A pointer that leaves the track entirely mid-drag (e.g. dragged off the
+// bottom of the screen) still needs to resolve like a normal release.
+scrubberTrack.addEventListener('pointerleave', (e) => {
+  if (isCarouselDragging) releaseCarouselDrag(e);
 });
 
 /* ==========================================================
@@ -684,6 +671,12 @@ function audioTick() {
     osc.start(); osc.stop(t + d);
   } catch (e) {}
 }
+// iOS Safari has never implemented the standard Vibration API (navigator.vibrate
+// is undefined there), so on Apple devices we fall back to a real trick: Apple's
+// <input type="checkbox" switch> control (Safari 17.4+ / iOS 17.4+) triggers the
+// system Haptic Engine when toggled via .click() — the only known way to get an
+// actual tactile tick out of iOS Safari. Everywhere else just uses vibrate();
+// if even the switch trick throws, audioTick() gives a soft audible tick instead.
 function hapticTick() {
   if (navigator.vibrate) { navigator.vibrate(8); return; }
   try {
@@ -700,7 +693,6 @@ function hapticTick() {
 
 let scrollVelocity = 0;
 let isTouching = false;
-let isScrubbing = false;
 let touchAnchorY = 0;
 let touchAnchorX = 0;
 let touchAnchorIndex = 0;
@@ -710,7 +702,6 @@ let lastHapticCenter = -1;
 
 const TOUCH_SENSITIVITY = 0.01;
 const SWIPE_THRESHOLD = 30;
-const SCRUB_DRAG_THRESHOLD = 4; // px of pointer movement before a press becomes a drag, not a click
 
 window.addEventListener('wheel', (e) => {
   scrollVelocity += e.deltaY * 0.002;
@@ -829,7 +820,7 @@ function animate() {
     return;
   }
 
-  if (!isTouching && !isScrubbing) {
+  if (!isTouching) {
     scrollVelocity *= 0.82;
     if (Math.abs(scrollVelocity) < 0.001) scrollVelocity = 0;
     virtualIndex += scrollVelocity;
@@ -846,7 +837,7 @@ function animate() {
     renderWindow();
     updateInfo();
     if (!isTouching && IS_MOBILE) {
-      if (navigator.vibrate) navigator.vibrate(8);
+      hapticTick(); // was a raw navigator.vibrate() call — silently did nothing on iOS Safari
     }
   }
 
@@ -885,9 +876,23 @@ function animate() {
     card.style.opacity = opacity;
   });
 
-  // Runs every animated frame (not just on integer-card changes) so the
-  // scrubber thumb glides in step with the eased/momentum card motion.
-  updateScrubberThumb();
+  // Carousel: while the user is actively dragging it, pointermove already
+  // owns carouselIndex directly. Otherwise, ease it toward whichever series
+  // the centered card belongs to — this is what glides the carousel into
+  // place after a drag release (jumpToAge() above already changed the
+  // current comic, so this converges on the same spot) and what makes it
+  // passively follow along when the rolodex itself is scrolled instead.
+  let carouselSettled = true;
+  if (!isCarouselDragging && scrubSeries.length > 1) {
+    const c = currentComic();
+    const targetIdx = c ? scrubSeries.findIndex(s => s.age === c.age) : Math.round(carouselIndex);
+    if (targetIdx !== -1) {
+      const carouselDelta = targetIdx - carouselIndex;
+      carouselIndex += carouselDelta * (REDUCED_MOTION ? 1 : 0.2);
+      carouselSettled = Math.abs(carouselDelta) < 0.01;
+    }
+    layoutScrubberLabels();
+  }
 
   // scrollVelocity is hard-zeroed above once it decays below 0.001, so
   // checking it against exactly 0 here is safe, not just "small enough."
@@ -897,7 +902,8 @@ function animate() {
   // settling to satisfy, which would keep the "idle" loop alive far longer
   // than any visible motion actually lasts.
   const settled = !isTouching && scrollVelocity === 0 &&
-                  Math.abs(virtualIndex - Math.round(virtualIndex)) < 0.01;
+                  Math.abs(virtualIndex - Math.round(virtualIndex)) < 0.01 &&
+                  !isCarouselDragging && carouselSettled;
 
   if (settled) {
     localStorage.setItem('sw-index', Math.round(virtualIndex));

@@ -273,7 +273,12 @@ html, body {
 }
 .arc-nav-item-child .arc-nav-item-meta { opacity: .45; }
 
-/* ===== SCRUBBER ===== */
+/* ===== SCRUBBER — "mode carousel" style, like the iPhone Camera app's
+   PHOTO/VIDEO/PANO strip: the current series sits centered, bold and bright;
+   neighbors shrink and dim with distance; drag/swipe pages between series
+   with momentum, rubber-band at the ends, and a haptic tick per series
+   crossed. Position/scale/opacity are computed per-frame in JS (mirroring
+   how the rolodex cards themselves are transformed), not CSS-animated. */
 .scrubber {
   position: fixed; left: 0; right: 0; bottom: 0;
   height: var(--scrubber-h); z-index: 1250;
@@ -281,47 +286,39 @@ html, body {
   background: var(--color-overlay-strong);
   border-top: 1px solid var(--color-border-subtle);
   pointer-events: auto;
+  overflow: hidden;
 }
 
 .scrubber-track {
   position: relative;
   flex: 1 1 auto;
-  display: flex; align-items: stretch;
   touch-action: none;
-  cursor: pointer;
+  cursor: grab;
 }
 
-.scrub-segment {
-  flex-basis: var(--space-5); flex-shrink: 0;
-  border-right: 1px solid var(--color-border-subtle);
-  background: rgba(255,255,255,0.03);
-  cursor: pointer;
-  transition: background var(--dur-fast);
-}
-.scrub-segment:hover, .scrub-segment.active { background: rgba(49,246,141,0.12); }
-.scrub-segment:last-child { border-right: none; }
-
-.scrubber-thumb {
-  position: absolute; top: 0; bottom: 0; left: 0;
-  width: 3px; margin-left: -1.5px;
-  background: var(--color-accent);
-  pointer-events: none;
-  box-shadow: 0 0 6px var(--color-accent);
+.scrubber-labels {
+  position: absolute; inset: 0;
 }
 
-.scrubber-tooltip {
-  position: fixed; bottom: calc(var(--scrubber-h) + var(--space-2)); left: 0;
-  transform: translateX(-50%);
-  padding: var(--space-1) var(--space-2);
-  background: var(--color-overlay-strong);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-2xs); letter-spacing: .06em; text-transform: uppercase;
+.scrub-label {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 var(--space-2);
+  font-size: var(--text-base); font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--color-text);
   white-space: nowrap;
-  opacity: 0; pointer-events: none;
-  transition: opacity var(--dur-fast);
+  cursor: pointer;
+  will-change: transform, opacity;
 }
-.scrubber-tooltip.visible { opacity: 1; }
+.scrub-label.current { color: var(--color-accent); }
+
+.scrubber-center-tick {
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; margin-left: -0.5px;
+  background: var(--color-border-subtle);
+  pointer-events: none;
+}
 
 /* ===== MODAL ===== */
 .modal-overlay {
@@ -445,7 +442,7 @@ html, body {
   .arc-nav-toggle { width: 40px; font-size: var(--text-md); }
   .arc-nav { width: 100%; top: auto; bottom: 0; height: 60vh; border-left: none; border-top: 1px solid var(--color-border-subtle); transform: translateY(100%); }
   .arc-nav.open { transform: translateY(0); }
-  .scrub-segment { flex-basis: var(--space-6); }
+  .scrub-label { font-size: var(--text-sm); }
 
   .card-stack { width: 50vw; max-width: 320px; height: 55vh; }
   .card-inner img { filter: none; }
