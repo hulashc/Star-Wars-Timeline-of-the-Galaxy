@@ -1315,6 +1315,40 @@ var COMICS_DATA = {
       "publisher": "Dark Horse Comics", "format": "4-issue limited series",
       "release": "2000",
       "note": "The Jedi Council uncovers a Sith plot to pit the Yinchorri against the Republic and its Jedi defenders."
+    },
+
+    // ── Darth Maul ────────────────────────────────────────────────
+    {
+      "year": 33, "era": "BBY",
+      "age": "Darth Maul",
+      "title": "Darth Maul", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2000",
+      "note": "Darth Sidious orders his apprentice to destroy the crime syndicate Black Sun, and Darth Maul begins hunting down its ruling vigos one by one."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Darth Maul",
+      "title": "Darth Maul", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2000",
+      "note": "As Maul continues his purge, the surviving vigos scramble to protect themselves from the unseen assassin picking them off."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Darth Maul",
+      "title": "Darth Maul", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2000",
+      "note": "The remaining vigos gather with Black Sun's leader Alexi Garyn inside his fortress on Ralltiir, believing its walls will keep them safe."
+    },
+    {
+      "year": 33, "era": "BBY",
+      "age": "Darth Maul",
+      "title": "Darth Maul", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2000",
+      "note": "Maul infiltrates the Black Sun fortress and completes his mission, cutting down Garyn, his bodyguard Mighella, and the last of the vigos."
     }
   ],
   "canon": [

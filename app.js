@@ -80,6 +80,8 @@ function handleImageError(img, alt) {
   img.parentNode.insertBefore(fb, img);
 }
 
+function pad(n, width) { return String(n).padStart(width, '0'); }
+
 function coverSlug(comic) {
   // Top-level continuity split — covers/legends/... vs covers/canon/... —
   // mirroring how comics.js itself splits COMICS_DATA into legends/canon.
@@ -88,14 +90,20 @@ function coverSlug(comic) {
   const ageSlug = slugify(comic.age);
   // Prefer the named story arc (e.g. Knights of the Old Republic's
   // "Commencement", "Flashpoint", ...) as the sub-folder when present —
-  // covers/legends/knights-of-the-old-republic/commencement/1.jpg — matching
-  // the per-arc folder convention used for Dawn of the Jedi / Tales of the Jedi.
-  // Falls back to the colon-split part of the title for series without a
-  // distinct `arc` field.
+  // covers/legends/003-knights-of-the-old-republic/01-commencement/1.jpg —
+  // matching the per-arc folder convention used for Dawn of the Jedi / Tales
+  // of the Jedi. Falls back to the colon-split part of the title for series
+  // without a distinct `arc` field.
   const sub = comic.arc || (comic.title.includes(':') ? comic.title.split(':')[1].trim() : comic.title);
   const subSlug = slugify(sub);
   const issueSlug = slugify(comic.issue);
-  return `${continuitySlug}/${ageSlug}/${subSlug}/${issueSlug}`;
+  // ageIndex/arcIndex are stamped by sortAllEras() — a series' chronological
+  // rank within its continuity (1, 2, 3, ...) and an arc's rank within that
+  // series, giving folders like 003-knights-of-the-old-republic/01-commencement
+  // so a plain file browser lists them in story order, not alphabetically.
+  const ageFolder = `${pad(comic.ageIndex, 3)}-${ageSlug}`;
+  const subFolder = `${pad(comic.arcIndex, 2)}-${subSlug}`;
+  return `${continuitySlug}/${ageFolder}/${subFolder}/${issueSlug}`;
 }
 
 function createCoverImage(comic, container) {
@@ -172,6 +180,34 @@ function sortAllEras(data) {
         console.warn(`[timeline] "${entry.c.title} ${entry.c.issue}" is out of chronological order in comics.js — check its year/era.`);
       }
     });
+
+    // Stamp each comic with its series' chronological rank within this
+    // continuity (ageIndex) and its arc's rank within that series
+    // (arcIndex) — coverSlug() uses these to build numbered folder names
+    // (e.g. 003-knights-of-the-old-republic/01-commencement) so a plain
+    // file browser lists cover folders in story order, not alphabetically.
+    let ageCounter = 0;
+    const ageIndexByName = new Map();
+    const arcCounterByAge = new Map();
+    const arcIndexByKey = new Map();
+    ordered.forEach(entry => {
+      const c = entry.c;
+      if (!ageIndexByName.has(c.age)) {
+        ageCounter++;
+        ageIndexByName.set(c.age, ageCounter);
+      }
+      c.ageIndex = ageIndexByName.get(c.age);
+
+      const sub = c.arc || (c.title.includes(':') ? c.title.split(':')[1].trim() : c.title);
+      const arcKey = c.age + '|' + slugify(sub);
+      if (!arcIndexByKey.has(arcKey)) {
+        const n = (arcCounterByAge.get(c.age) || 0) + 1;
+        arcCounterByAge.set(c.age, n);
+        arcIndexByKey.set(arcKey, n);
+      }
+      c.arcIndex = arcIndexByKey.get(arcKey);
+    });
+
     sorted[era] = ordered.map(entry => entry.c);
   }
   return sorted;
