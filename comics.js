@@ -1353,6 +1353,158 @@ var COMICS_DATA = {
   ],
   "canon": [
     {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Quest of the Jedi",
+      "title": "Star Wars: The High Republic Adventures – Quest of the Jedi", "issue": "One-Shot",
+      "publisher": "Dark Horse Comics", "format": "One-shot",
+      "release": "2023",
+      "note": "A storm rises in the Force as two Jedi race against time in the High Republic's second phase."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "The Blade",
+      "title": "Star Wars: The High Republic – The Blade", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2022",
+      "note": "A hooded figure wielding a strange, dark blade stalks the edges of the High Republic."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "The Blade",
+      "title": "Star Wars: The High Republic – The Blade", "issue": "#2",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2022",
+      "note": "The mystery of the Blade deepens as its wielder's past comes into focus."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "The Blade",
+      "title": "Star Wars: The High Republic – The Blade", "issue": "#3",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "A confrontation forces the truth about the Blade's wielder into the open."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "The Blade",
+      "title": "Star Wars: The High Republic – The Blade", "issue": "#4",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "The fate of the Blade's wielder is decided in a climactic confrontation."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Balance of the Force",
+      "title": "Star Wars: The High Republic", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2022",
+      "note": "Jedi Vildar Mac arrives on Jedha as a murder and a stolen relic unravel the holy city's fragile peace."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Balance of the Force",
+      "title": "Star Wars: The High Republic", "issue": "#2",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2022",
+      "note": "Mac hunts a Force-wielding thief through Jedha's underworld using forbidden psychometric techniques."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Balance of the Force",
+      "title": "Star Wars: The High Republic", "issue": "#3",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2022",
+      "note": "Mac and his Padawan shelter a suspect from the Temple Guardians as a deeper conspiracy emerges."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Balance of the Force",
+      "title": "Star Wars: The High Republic", "issue": "#4",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2023",
+      "note": "The Path of the Open Hand's Herald addresses Jedha's Convocation as violence erupts across the city."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Balance of the Force",
+      "title": "Star Wars: The High Republic", "issue": "#5",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2023",
+      "note": "The Battle of Jedha reaches its climax as the truth behind the relic thefts and murders is exposed."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Battle for the Force",
+      "title": "Star Wars: The High Republic", "issue": "#6",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2023",
+      "note": "Tey Sirrek defends the Temple of the Kyber as the Path of the Open Hand closes in on Jedha."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Battle for the Force",
+      "title": "Star Wars: The High Republic", "issue": "#7",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2023",
+      "note": "Buried and alone, Vildar Mac's faith in the Force becomes the only thing keeping him alive."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Battle for the Force",
+      "title": "Star Wars: The High Republic", "issue": "#8",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2023",
+      "note": "Padawan Cathley uncovers a secret vault hidden beneath the Jedi's own holy ground."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Battle for the Force",
+      "title": "Star Wars: The High Republic", "issue": "#9",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2023",
+      "note": "Jedi Master Leebon is consumed by the Force-eating Leveler, unleashed by the Path's Herald."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "Battle for the Force",
+      "title": "Star Wars: The High Republic", "issue": "#10",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2023",
+      "note": "Vildar Mac risks the dark side to defeat the Leveler and end the Path of the Open Hand for good."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "The Nameless Terror",
+      "title": "Star Wars: The High Republic Adventures – The Nameless Terror", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "A Jedi wayseeker mission to Dalna comes under attack by an unseen, ancient predator."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "The Nameless Terror",
+      "title": "Star Wars: The High Republic Adventures – The Nameless Terror", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "The wayseekers retreat deeper into ancient ruins as the unseen terror stalks them."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "The Nameless Terror",
+      "title": "Star Wars: The High Republic Adventures – The Nameless Terror", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "The truth behind the creature preying on the Jedi begins to surface."
+    },
+    {
+      "year": 382, "era": "BBY",
+      "age": "The High Republic", "arc": "The Nameless Terror",
+      "title": "Star Wars: The High Republic Adventures – The Nameless Terror", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "The wayseekers' fight for survival concludes, tying their fate to a saber-for-hire's own story."
+    },
+    {
       "year": 232, "era": "BBY",
       "age": "The High Republic", "arc": "There Is No Fear",
       "title": "Star Wars: The High Republic", "issue": "#1",
@@ -1473,44 +1625,404 @@ var COMICS_DATA = {
       "note": "The arc concludes with the Jedi more determined than ever to hold the Outer Rim's line."
     },
     {
-      "year": 150, "era": "BBY",
-      "age": "The High Republic", "arc": "Quest of the Jedi",
-      "title": "Star Wars: The High Republic Adventures – Quest of the Jedi", "issue": "One-Shot",
+      "year": 231, "era": "BBY",
+      "age": "The High Republic", "arc": "The Monster of Temple Peak",
+      "title": "Star Wars: The High Republic Adventures – The Monster of Temple Peak", "issue": "#1",
+      "publisher": "IDW Publishing", "format": "4-issue limited series",
+      "release": "2021",
+      "note": "Saber-for-hire Ty Yorrick, a former Jedi turned monster hunter, makes her comics debut on a dangerous hunt."
+    },
+    {
+      "year": 231, "era": "BBY",
+      "age": "The High Republic", "arc": "The Monster of Temple Peak",
+      "title": "Star Wars: The High Republic Adventures – The Monster of Temple Peak", "issue": "#2",
+      "publisher": "IDW Publishing", "format": "4-issue limited series",
+      "release": "2021",
+      "note": "Yorrick's hunt for the beast of Temple Peak reveals a darker truth about her past."
+    },
+    {
+      "year": 231, "era": "BBY",
+      "age": "The High Republic", "arc": "The Monster of Temple Peak",
+      "title": "Star Wars: The High Republic Adventures – The Monster of Temple Peak", "issue": "#3",
+      "publisher": "IDW Publishing", "format": "4-issue limited series",
+      "release": "2021",
+      "note": "A Jedi and the mercenary clash as the true nature of the \"monster\" comes into focus."
+    },
+    {
+      "year": 231, "era": "BBY",
+      "age": "The High Republic", "arc": "The Monster of Temple Peak",
+      "title": "Star Wars: The High Republic Adventures – The Monster of Temple Peak", "issue": "#4",
+      "publisher": "IDW Publishing", "format": "4-issue limited series",
+      "release": "2021",
+      "note": "Yorrick's confrontation with the Temple Peak monster reaches its conclusion."
+    },
+    {
+      "year": 231, "era": "BBY",
+      "age": "The High Republic", "arc": "Annual",
+      "title": "Star Wars: The High Republic Adventures Annual", "issue": "#1",
+      "publisher": "IDW Publishing", "format": "One-shot anthology",
+      "release": "2021",
+      "note": "Five short tales from across the High Republic's founding authors fill this anthology one-shot."
+    },
+    {
+      "year": 231, "era": "BBY",
+      "age": "The High Republic", "arc": "Trail of Shadows",
+      "title": "Star Wars: The High Republic – Trail of Shadows", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "5-issue limited series",
+      "release": "2021",
+      "note": "Jedi Master Emerick Caphtor is called in to investigate the mysterious death of Loden Greatstorm."
+    },
+    {
+      "year": 231, "era": "BBY",
+      "age": "The High Republic", "arc": "Trail of Shadows",
+      "title": "Star Wars: The High Republic – Trail of Shadows", "issue": "#2",
+      "publisher": "Marvel Comics", "format": "5-issue limited series",
+      "release": "2021",
+      "note": "Caphtor and a colleague dig deeper into a Jedi cover-up tied to Greatstorm's death."
+    },
+    {
+      "year": 231, "era": "BBY",
+      "age": "The High Republic", "arc": "Trail of Shadows",
+      "title": "Star Wars: The High Republic – Trail of Shadows", "issue": "#3",
+      "publisher": "Marvel Comics", "format": "5-issue limited series",
+      "release": "2021",
+      "note": "The trail of shadows leads Caphtor toward the true nature of the weapon that killed Greatstorm."
+    },
+    {
+      "year": 230, "era": "BBY",
+      "age": "The High Republic", "arc": "Trail of Shadows",
+      "title": "Star Wars: The High Republic – Trail of Shadows", "issue": "#4",
+      "publisher": "Marvel Comics", "format": "5-issue limited series",
+      "release": "2022",
+      "note": "Caphtor closes in on the culprit as the investigation turns dangerous."
+    },
+    {
+      "year": 230, "era": "BBY",
+      "age": "The High Republic", "arc": "Trail of Shadows",
+      "title": "Star Wars: The High Republic – Trail of Shadows", "issue": "#5",
+      "publisher": "Marvel Comics", "format": "5-issue limited series",
+      "release": "2022",
+      "note": "Caphtor confronts the truth behind Greatstorm's murder and the secret it protects."
+    },
+    {
+      "year": 230, "era": "BBY",
+      "age": "The High Republic", "arc": "Eye of the Storm",
+      "title": "Star Wars: The High Republic – Eye of the Storm", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "2-issue limited series",
+      "release": "2022",
+      "note": "Marchion Ro's rise and his discovery of the Great Leveler are revealed."
+    },
+    {
+      "year": 230, "era": "BBY",
+      "age": "The High Republic", "arc": "Eye of the Storm",
+      "title": "Star Wars: The High Republic – Eye of the Storm", "issue": "#2",
+      "publisher": "Marvel Comics", "format": "2-issue limited series",
+      "release": "2022",
+      "note": "Ro's plan against Starlight Beacon comes to fruition, closing out the High Republic's first phase."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "Shadows of Starlight",
+      "title": "Star Wars: The High Republic – Shadows of Starlight", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "In the year after Starlight Beacon's fall, the Jedi Council recalls its Knights and imposes emergency measures."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "Shadows of Starlight",
+      "title": "Star Wars: The High Republic – Shadows of Starlight", "issue": "#2",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "Elzar Mann and Avar Kriss grapple with grief and each other in the wake of Stellan Gios's death."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "Shadows of Starlight",
+      "title": "Star Wars: The High Republic – Shadows of Starlight", "issue": "#3",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "Bell Zettifar and his charhound Ember hunt down Nihil remnants still terrorizing the galaxy."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "Shadows of Starlight",
+      "title": "Star Wars: The High Republic – Shadows of Starlight", "issue": "#4",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "The missing year since Starlight's destruction comes into full focus as the Nihil's grip tightens."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "Children of the Storm",
+      "title": "Star Wars: The High Republic", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2023",
+      "note": "A year after Starlight Beacon's fall, Keeve Trennis leads a desperate stand against the triumphant Nihil."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "Children of the Storm",
+      "title": "Star Wars: The High Republic", "issue": "#2",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2023",
+      "note": "Trennis is captured by Skarabda the Hutt's forces as the Nihil forge an alliance with the Hutts."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "Children of the Storm",
+      "title": "Star Wars: The High Republic", "issue": "#3",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2024",
+      "note": "Trennis and the Force-bonded twins Terec and Ceret retake the Jedi flagship Ataraxia from Lourna Dee."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "Children of the Storm",
+      "title": "Star Wars: The High Republic", "issue": "#4",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2024",
+      "note": "Trennis defies Coruscant's orders and crosses the Stormwall to search for the missing Sskeer."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "Children of the Storm",
+      "title": "Star Wars: The High Republic", "issue": "#5",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2024",
+      "note": "Trennis's rescue mission into Nihil-held space comes to a head."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "The Hunted",
+      "title": "Star Wars: The High Republic", "issue": "#6",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2024",
+      "note": "Keeve Trennis finally finds what she has been searching for deep in the Nihil Occlusion Zone."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "The Hunted",
+      "title": "Star Wars: The High Republic", "issue": "#7",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2024",
+      "note": "Trennis must decide whether her former enemy Lourna Dee can be trusted."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "The Hunted",
+      "title": "Star Wars: The High Republic", "issue": "#8",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2024",
+      "note": "A face from the past resurfaces to test the Jedi's deepest fears."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "The Hunted",
+      "title": "Star Wars: The High Republic", "issue": "#9",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2024",
+      "note": "Trennis gathers a band of Jedi, pirates, and wanderers as the Children of the Storm make their move."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "The Hunted",
+      "title": "Star Wars: The High Republic", "issue": "#10",
+      "publisher": "Marvel Comics", "format": "10-issue ongoing series",
+      "release": "2024",
+      "note": "The Hunted concludes as Trennis's makeshift alliance confronts the Nihil directly."
+    },
+    {
+      "year": 229, "era": "BBY",
+      "age": "The High Republic", "arc": "The Acolyte: Kelnacca",
+      "title": "Star Wars: The Acolyte – Kelnacca", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "One-shot",
+      "release": "2024",
+      "note": "The Wookiee Jedi Kelnacca's history in the High Republic era is explored ahead of his later path."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Crash Landing",
+      "title": "Star Wars: The High Republic Adventures – Crash Landing", "issue": "#1",
       "publisher": "Dark Horse Comics", "format": "One-shot",
-      "release": "2023",
-      "note": "A storm rises in the Force as two Jedi race against time in the High Republic's second phase."
+      "release": "2024",
+      "note": "Vigilante \"Crash\" Ongwa and her crew keep hunting down the Nihil conspirators who plunged Corellia into chaos."
     },
     {
-      "year": 150, "era": "BBY",
-      "age": "The High Republic", "arc": "The Blade",
-      "title": "Star Wars: The High Republic – The Blade", "issue": "#1",
-      "publisher": "Marvel Comics", "format": "4-issue limited series",
-      "release": "2023",
-      "note": "A hooded figure wielding a strange, dark blade stalks the edges of the High Republic."
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Saber for Hire",
+      "title": "Star Wars: The High Republic Adventures – Saber for Hire", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "Ty Yorrick, now working the Nihil Stormwall as a monster hunter, reluctantly takes on an apprentice."
     },
     {
-      "year": 150, "era": "BBY",
-      "age": "The High Republic", "arc": "The Blade",
-      "title": "Star Wars: The High Republic – The Blade", "issue": "#2",
-      "publisher": "Marvel Comics", "format": "4-issue limited series",
-      "release": "2023",
-      "note": "The mystery of the Blade deepens as its wielder's past comes into focus."
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Saber for Hire",
+      "title": "Star Wars: The High Republic Adventures – Saber for Hire", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "The Nihil kidnap Force-sensitive children, forcing Yorrick into action to get them back."
     },
     {
-      "year": 150, "era": "BBY",
-      "age": "The High Republic", "arc": "The Blade",
-      "title": "Star Wars: The High Republic – The Blade", "issue": "#3",
-      "publisher": "Marvel Comics", "format": "4-issue limited series",
-      "release": "2023",
-      "note": "A confrontation forces the truth about the Blade's wielder into the open."
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Saber for Hire",
+      "title": "Star Wars: The High Republic Adventures – Saber for Hire", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "Yorrick comes face to face with a Child of the Storm behind the Nihil's latest scheme."
     },
     {
-      "year": 150, "era": "BBY",
-      "age": "The High Republic", "arc": "The Blade",
-      "title": "Star Wars: The High Republic – The Blade", "issue": "#4",
-      "publisher": "Marvel Comics", "format": "4-issue limited series",
-      "release": "2023",
-      "note": "The fate of the Blade's wielder is decided in a climactic confrontation."
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Saber for Hire",
+      "title": "Star Wars: The High Republic Adventures – Saber for Hire", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "The identity of the sinister Child of the Storm is revealed as Yorrick's past catches up with her."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Echoes of Fear",
+      "title": "Star Wars: The High Republic Adventures – Echoes of Fear", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "Reath Silas and a Padawan research the Force-amplifying Echo Stones and the Sith Lord who once sought them."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Echoes of Fear",
+      "title": "Star Wars: The High Republic Adventures – Echoes of Fear", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "The pair dig further into the Echo Stones' dark history and the price of wielding them."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Echoes of Fear",
+      "title": "Star Wars: The High Republic Adventures – Echoes of Fear", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "The fate of a long-missing Jedi ties back to the mystery of the Echo Stones."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Echoes of Fear",
+      "title": "Star Wars: The High Republic Adventures – Echoes of Fear", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "Silas and his Padawan race to secure the last Echo Stone fragment before the Nameless can claim it."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Crash and Burn",
+      "title": "Star Wars: The High Republic Adventures – Crash and Burn", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "One-shot",
+      "release": "2024",
+      "note": "Crash Ongwa teams with a reformed Nihil villain to hunt down warlord Marchion Ro himself."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Dispatches from the Occlusion Zone",
+      "title": "Star Wars: The High Republic Adventures – Dispatches from the Occlusion Zone", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "Jedi Knights Keeve Trennis and Elzar Mann send hope into the Nihil-sealed Occlusion Zone via old technology."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Dispatches from the Occlusion Zone",
+      "title": "Star Wars: The High Republic Adventures – Dispatches from the Occlusion Zone", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "A Padawan-turned-freedom-fighter's story of resistance emerges from behind the Stormwall."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Dispatches from the Occlusion Zone",
+      "title": "Star Wars: The High Republic Adventures – Dispatches from the Occlusion Zone", "issue": "#3",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2024",
+      "note": "Emerick Caphtor and a Nihil prisoner of war investigate the true nature of the Nameless."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Dispatches from the Occlusion Zone",
+      "title": "Star Wars: The High Republic Adventures – Dispatches from the Occlusion Zone", "issue": "#4",
+      "publisher": "Dark Horse Comics", "format": "4-issue limited series",
+      "release": "2025",
+      "note": "Messages from across the Occlusion Zone set the stage for the final battle between Jedi and Nihil."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "The Wedding Spectacular",
+      "title": "Star Wars: The High Republic Adventures – The Wedding Spectacular", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "One-shot",
+      "release": "2024",
+      "note": "Freedom fighters Lula Talisola and Zeen Mrala marry on Eriadu in the franchise's first canonical LGBTQ+ wedding."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Fear of the Jedi",
+      "title": "Star Wars: The High Republic – Fear of the Jedi", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "5-issue limited series",
+      "release": "2025",
+      "note": "As fighting in the Occlusion Zone intensifies, Keeve Trennis is set on a path that will change her forever."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Fear of the Jedi",
+      "title": "Star Wars: The High Republic – Fear of the Jedi", "issue": "#2",
+      "publisher": "Marvel Comics", "format": "5-issue limited series",
+      "release": "2025",
+      "note": "Trennis prepares to breach the Stormwall as an old enemy returns with murder in mind."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Fear of the Jedi",
+      "title": "Star Wars: The High Republic – Fear of the Jedi", "issue": "#3",
+      "publisher": "Marvel Comics", "format": "5-issue limited series",
+      "release": "2025",
+      "note": "Trennis's Stormwall Defense Fleet joins the fight, testing her resolve to stay true to the Light."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Fear of the Jedi",
+      "title": "Star Wars: The High Republic – Fear of the Jedi", "issue": "#4",
+      "publisher": "Marvel Comics", "format": "5-issue limited series",
+      "release": "2025",
+      "note": "Trennis's Jedi face their greatest fear as the Nameless strike like never before."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "Fear of the Jedi",
+      "title": "Star Wars: The High Republic – Fear of the Jedi", "issue": "#5",
+      "publisher": "Marvel Comics", "format": "5-issue limited series",
+      "release": "2025",
+      "note": "With the Battle of Eriadu raging, Marshal Trennis addresses the galaxy as the war's end nears."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "The Battle of Eriadu",
+      "title": "Star Wars: The High Republic Adventures – The Battle of Eriadu", "issue": "#1",
+      "publisher": "Dark Horse Comics", "format": "One-shot",
+      "release": "2025",
+      "note": "Estranged friends Padawan Gavi and Nihil operative Driggit Parse meet again as enemies on the front lines of Eriadu."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "The Battle of Eriadu",
+      "title": "Star Wars: The High Republic Adventures – The Battle of Eriadu", "issue": "#2",
+      "publisher": "Dark Horse Comics", "format": "One-shot",
+      "release": "2025",
+      "note": "The battle for Eriadu comes to a head as the two old friends' loyalties are put to the ultimate test."
+    },
+    {
+      "year": 228, "era": "BBY",
+      "age": "The High Republic", "arc": "The Finale",
+      "title": "Star Wars: The High Republic – The Finale", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "One-shot",
+      "release": "2025",
+      "note": "\"The Beacon\": with the Nihil war finally won, Keeve Trennis and the High Republic's survivors gather on Dalna to build a new future."
     }
   ]
 };
