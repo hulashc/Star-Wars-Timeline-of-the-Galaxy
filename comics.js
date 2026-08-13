@@ -1511,14 +1511,6 @@ var COMICS_DATA = {
       "publisher": "Marvel Comics", "format": "4-issue limited series",
       "release": "2023",
       "note": "The fate of the Blade's wielder is decided in a climactic confrontation."
-    },
-    {
-      "year": 0, "era": "ABY",
-      "age": "Marvel",
-      "title": "Star Wars (2015)", "issue": "Vol. 1",
-      "publisher": "Marvel Comics", "format": "75-issue series",
-      "release": "2015-2019",
-      "note": "Rebellion adventures between A New Hope and The Empire Strikes Back."
     }
   ]
 };
