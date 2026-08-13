@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- The app loads no external scripts/styles/fonts/images/network calls at
+       all, so this can be locked to 'self' with zero functional cost: any
+       future injected/backdoored script would be unable to load or phone out
+       anywhere, and framing this page in another site's <iframe> is blocked. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" />
   <title>Star Wars Comics Deck</title>
   <link rel="stylesheet" href="styles.css" />
 </head>

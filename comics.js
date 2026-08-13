@@ -1353,6 +1353,166 @@ var COMICS_DATA = {
   ],
   "canon": [
     {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "There Is No Fear",
+      "title": "Star Wars: The High Republic", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2021",
+      "note": "Jedi Knight Keeve Trennis and Master Sskeer answer the call as the Nihil threaten the Republic Fair on Valo."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "There Is No Fear",
+      "title": "Star Wars: The High Republic", "issue": "#2",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2021",
+      "note": "The Nihil's raid forces the Jedi to evacuate civilians as chaos engulfs the Republic Fair."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "There Is No Fear",
+      "title": "Star Wars: The High Republic", "issue": "#3",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2021",
+      "note": "Keeve Trennis confronts her own fear as the Nihil's raid intensifies."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "There Is No Fear",
+      "title": "Star Wars: The High Republic", "issue": "#4",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2021",
+      "note": "The Jedi rally to protect Starlight Beacon's mission from the Nihil onslaught."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "There Is No Fear",
+      "title": "Star Wars: The High Republic", "issue": "#5",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2021",
+      "note": "The Republic Fair crisis reaches its climax, testing the newly knighted Keeve Trennis."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "The Heart of Drengir",
+      "title": "Star Wars: The High Republic", "issue": "#6",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2021",
+      "note": "A new threat emerges as the carnivorous, hive-minded Drengir spread across the Outer Rim."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "The Heart of Drengir",
+      "title": "Star Wars: The High Republic", "issue": "#7",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2021",
+      "note": "Jedi forces investigate a Drengir infestation threatening a remote Outer Rim world."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "The Heart of Drengir",
+      "title": "Star Wars: The High Republic", "issue": "#8",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2021",
+      "note": "The Drengir's hunger grows harder to contain as Jedi and Nihil interests collide."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "The Heart of Drengir",
+      "title": "Star Wars: The High Republic", "issue": "#9",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2021",
+      "note": "A desperate battle against the Drengir pushes the Jedi to their limits."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "The Heart of Drengir",
+      "title": "Star Wars: The High Republic", "issue": "#10",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2022",
+      "note": "The Jedi race to stop the Drengir threat from spreading further across the galaxy."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "Jedi's End",
+      "title": "Star Wars: The High Republic", "issue": "#11",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2022",
+      "note": "A mysterious tragedy strikes the Jedi Order, shaking its confidence to the core."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "Jedi's End",
+      "title": "Star Wars: The High Republic", "issue": "#12",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2022",
+      "note": "Keeve Trennis and her allies investigate a chilling attack on a Jedi enclave."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "Jedi's End",
+      "title": "Star Wars: The High Republic", "issue": "#13",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2022",
+      "note": "The trail leads deeper into Nihil territory as old wounds resurface."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "Jedi's End",
+      "title": "Star Wars: The High Republic", "issue": "#14",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2022",
+      "note": "A confrontation forces the Jedi to reckon with loss and vengeance."
+    },
+    {
+      "year": 232, "era": "BBY",
+      "age": "The High Republic", "arc": "Jedi's End",
+      "title": "Star Wars: The High Republic", "issue": "#15",
+      "publisher": "Marvel Comics", "format": "Ongoing series",
+      "release": "2022",
+      "note": "The arc concludes with the Jedi more determined than ever to hold the Outer Rim's line."
+    },
+    {
+      "year": 150, "era": "BBY",
+      "age": "The High Republic", "arc": "Quest of the Jedi",
+      "title": "Star Wars: The High Republic Adventures – Quest of the Jedi", "issue": "One-Shot",
+      "publisher": "Dark Horse Comics", "format": "One-shot",
+      "release": "2023",
+      "note": "A storm rises in the Force as two Jedi race against time in the High Republic's second phase."
+    },
+    {
+      "year": 150, "era": "BBY",
+      "age": "The High Republic", "arc": "The Blade",
+      "title": "Star Wars: The High Republic – The Blade", "issue": "#1",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "A hooded figure wielding a strange, dark blade stalks the edges of the High Republic."
+    },
+    {
+      "year": 150, "era": "BBY",
+      "age": "The High Republic", "arc": "The Blade",
+      "title": "Star Wars: The High Republic – The Blade", "issue": "#2",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "The mystery of the Blade deepens as its wielder's past comes into focus."
+    },
+    {
+      "year": 150, "era": "BBY",
+      "age": "The High Republic", "arc": "The Blade",
+      "title": "Star Wars: The High Republic – The Blade", "issue": "#3",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "A confrontation forces the truth about the Blade's wielder into the open."
+    },
+    {
+      "year": 150, "era": "BBY",
+      "age": "The High Republic", "arc": "The Blade",
+      "title": "Star Wars: The High Republic – The Blade", "issue": "#4",
+      "publisher": "Marvel Comics", "format": "4-issue limited series",
+      "release": "2023",
+      "note": "The fate of the Blade's wielder is decided in a climactic confrontation."
+    },
+    {
       "year": 0, "era": "ABY",
       "age": "Marvel",
       "title": "Star Wars (2015)", "issue": "Vol. 1",
